@@ -8,4 +8,17 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+
+  header
+    nav.navbar.navbar-white.bg-dark.text-white.fixed-top
+      a.navbar-brand LearningManagement
+      ul.nav
+        li.nav-item
+          a.nav-link マイページ
+        li.nav-item
+          a.nav-link ログアウト
+
+  .container-fluid
     = yield
+
+  footer

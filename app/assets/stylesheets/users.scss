@@ -1,0 +1,24 @@
+.sidebar {
+    background-color: lightgray;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 60px;
+    width: 330px;
+}
+
+.sidebar li {
+    text-align: center;
+    width: 100%;
+    padding-top: 30px;
+}
+
+li img {
+    border-radius: 50%;
+    border: 1px black solid;
+    background-color: white;
+    width: 150px;
+    height: 150px;
+}
