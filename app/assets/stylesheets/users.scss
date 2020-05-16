@@ -36,13 +36,16 @@ li img {
         float:right;
         margin-bottom: 20px;
     }
-    .box1 {
+    div {
         height: 30px;
+        background-color: white;
+        cursor: pointer;
     }
 
     table {
         margin-top: 30px;
     }
+
 }
 
 .new_comment {

@@ -8,17 +8,9 @@
 				tr
 					th 英語
 					td.row
-						.box1.count.col-1.col-md-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-								tr
+						- @boxs.each do |box|
+							== box
+				tr
 					th 数学
 					td.row
 						.box1.count.col-1.border.border-dark
