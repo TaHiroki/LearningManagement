@@ -5,7 +5,7 @@
     top: 0;
     bottom: 0;
     left: 0;
-    z-index: 100;
+    z-index: -10;
     padding-top: 60px;
     width: 330px;
 }
@@ -22,6 +22,7 @@ li img {
     background-color: white;
     width: 150px;
     height: 150px;
+    margin-top: 60px;
 }
 
 .main,.new_comment {
@@ -68,7 +69,6 @@ li img {
         margin-top: 40px;
     }
 }
-
 /* index -----------------------*/
 .main {
     a {
@@ -83,7 +83,6 @@ li img {
     table {
         margin-top: 30px;
     }
-
 }
 
 .new_comment {
@@ -91,5 +90,14 @@ li img {
         float:right;
         margin-bottom: 20px;
     }
-    
+}
+
+.flash {
+    text-align: center;
+}
+/* new -----------------------*/
+.makeuser{
+    padding-top: 50px;
+    width: 50%;
+    margin: 0 auto;
 }

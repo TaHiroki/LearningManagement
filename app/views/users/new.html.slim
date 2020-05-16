@@ -1,3 +1,9 @@
+- if @user.errors.present?
+  .alert.alert-danger.text-center role="alert"
+    h4.alert-heading 入力を確認してください。
+    - @user.errors.full_messages.each do |message|
+      p = message
+
 .container
   .makeuser
     h1 新規登録
