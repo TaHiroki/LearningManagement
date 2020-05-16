@@ -3,7 +3,10 @@ class UsersController < ApplicationController
     @user = User.find(1)
 
     @boxes = Array.new(10)
-    10.times{ |n| @boxes << '<div class="box count col-1 border border-dark" id='+"box#{n}"+'></div>' }
+    10.times{ |n| @boxes << '<div class="box col-1 border border-dark" id='+"box#{n}"+'></div>' }
                             
+  end
+
+  def login
   end
 end
