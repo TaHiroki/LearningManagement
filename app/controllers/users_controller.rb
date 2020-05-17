@@ -32,6 +32,9 @@ class UsersController < ApplicationController
     
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "ユーザー「#{@user.name}」を更新しました!"
+    else
+      render :edit
+    end
   end
 
   def login
