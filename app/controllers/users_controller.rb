@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @chapter = '新規登録'
   end
 
   def create
@@ -21,13 +22,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(1)
+    @chapter = 'アカウント編集'
+  end
+
+  def update
+    @user = User.find(params[:id])
+    
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: "ユーザー「#{@user.name}」を更新しました!"
+  end
+
   def login
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :introduction)
   end
 
 end

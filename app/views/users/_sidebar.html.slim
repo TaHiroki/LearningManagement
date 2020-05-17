@@ -7,6 +7,6 @@
       li.nav-item
         p = user.name
       li.nav-item
-        a.btn.btn-primary.button#test href="#" 編集
+        = link_to '編集', edit_user_path(user), class: 'btn btn-primary button'
       li.nav-itme
         p 実施個数表示

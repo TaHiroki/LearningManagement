@@ -1,0 +1,23 @@
+- if user.errors.present?
+  .alert.alert-danger.text-center role="alert"
+    h4.alert-heading 入力を確認してください。
+    - user.errors.full_messages.each do |message|
+      p = message
+
+.container
+  .makeuser
+    h1 = chapter
+    = form_with model: user, local: true do |f|
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+      .form-group
+        = f.label :email
+        = f.text_field :email, class: 'form-control'
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label :introduction
+        = f.text_area :introduction, class: 'form-control'
+      = f.submit '登録する', class: 'btn btn-info'
