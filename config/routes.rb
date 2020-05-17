@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'comments/index'
   root to: 'users#index'
   resources :users do
     collection do
