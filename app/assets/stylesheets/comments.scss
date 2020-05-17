@@ -1,3 +1,20 @@
-// Place all the styles related to the comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* index-------------------*/
+.comments {
+  margin-top: 10px;
+  height: 500px;
+  overflow-y: scroll;
+  .comment {
+    margin-right: 40px;
+    .btn {
+      margin: 10px 20px; 
+    }
+  }
+
+}
+
+.send_comment {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 200px;
+}

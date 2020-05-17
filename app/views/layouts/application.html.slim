@@ -16,6 +16,8 @@ html
         li.nav-item
           = link_to '進捗', users_path, class: 'nav-link'
         li.nav-item
+          = link_to 'コメント一覧', comments_path, class: 'nav-link'
+        li.nav-item
           = link_to 'ログイン', login_users_path, class: 'nav-link'
   #main
     -if flash[:notice].present?
