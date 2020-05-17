@@ -14,9 +14,9 @@ html
       a.navbar-brand LearningManagement
       ul.nav
         li.nav-item
-          a.nav-link マイページ
+          = link_to 'マイページ', users_path, class: 'nav-link'
         li.nav-item
-          a.nav-link ログアウト
+          = link_to 'ログイン', login_users_path, class: 'nav-link'
   #main
     -if flash[:notice].present?
       .flash.alert.alert-success role="alert"

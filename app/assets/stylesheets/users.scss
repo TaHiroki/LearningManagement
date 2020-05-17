@@ -1,4 +1,11 @@
 /* application-------------------*/
+header a{
+    color: white;
+    &:hover {
+        color: white;
+    }
+}
+/* sidebar-------------------*/
 .sidebar {
     background-color: lightgray;
     position: fixed;
