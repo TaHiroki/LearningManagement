@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
     @boxes = Array.new(10)
     10.times{ |n| @boxes << '<div class="box col-1 border border-dark" id='+"box#{n}"+'></div>' }
-                            
   end
 
   def new
@@ -16,14 +15,18 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: "ユーザー「#{@user.name}」を登録しました!"
+      redirect_to users_path, notice: "ユーザー「#{@user.name}」を登録しました!"
     else
       render :new
     end
   end
 
+  def show
+    @user = User.find(7)
+  end
+
   def edit
-    @user = User.find(1)
+    @user = User.find(params[:id])
     @chapter = 'アカウント編集'
   end
 
@@ -35,6 +38,12 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to login_users_path, notice: "ユーザーを削除しました"
   end
 
   def login

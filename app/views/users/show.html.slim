@@ -1,0 +1,14 @@
+.usershow
+  h1 アカウント詳細
+  ul.nav.flex-column
+      li.nav-item
+        .user_img
+          img src="/user-image/user1.png" 
+      li.nav-item
+        p = @user.name
+      li.nav-item
+        = link_to '編集', edit_user_path(@user), class: 'btn btn-primary button'
+        = link_to '削除', user_path(@user), method: :delete, class: 'btn btn-danger button'
+      li.nav-itme.border
+        p 自己紹介
+        = @user.introduction
