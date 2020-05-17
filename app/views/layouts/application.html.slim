@@ -16,8 +16,11 @@ html
         li.nav-item
           a.nav-link マイページ
         li.nav-item
-          a.nav-link ログアウト     
-    #main
-      = yield
+          a.nav-link ログアウト
+  #main
+    -if flash[:notice].present?
+      .flash.alert.alert-success role="alert"
+        = flash[:notice]
+    = yield
 
   footer
