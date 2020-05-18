@@ -1,0 +1,14 @@
+- if @comment.errors.present?
+  .alert.alert-danger.text-center role="alert"
+    h4.alert-heading コメントを入力して下さい
+    - @comment.errors.full_messages.each do |message|
+      p = message
+
+.container
+  .makecomment
+    h1 コメント投稿
+    = form_with model: @comment, local: true do |f|
+      .form-group
+        = f.label :comment, 'コメント'
+        = f.text_area :comment, class: 'form-control'
+      = f.submit '投稿する', class: 'btn btn-info'
