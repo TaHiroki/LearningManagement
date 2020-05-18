@@ -1,4 +1,6 @@
 class ReplysController < ApplicationController
-  def index
+  def new
+    @reply = Reply.new
+    @comment = Comment.find(params[:re])
   end
 end

@@ -13,8 +13,8 @@
           p.time = "ハート #{comment.created_at}"
           .d-flex.justify-content-end
             = link_to '詳細', comment_path(comment), class: 'btn btn-primary' 
-            = link_to 'コメントする', users_path, class: 'btn btn-success' 
+            = form_with url: new_reply_path,method: :get, local: true do |f|
+              = f.hidden_field :re, value: comment.id
+              = f.submit 'コメントする', class: 'btn btn-success'
             = link_to '削除', comment_path(comment), method: :delete,
             data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete' 
-
-

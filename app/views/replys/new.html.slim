@@ -1,0 +1,16 @@
+- if @reply.errors.present?
+  .alert.alert-danger.text-center role="alert"
+    h4.alert-heading コメントを入力して下さい
+    - @reply.errors.full_messages.each do |message|
+      p = message
+
+.container
+  .makereply
+    h1 投稿に返信
+    = form_with model: @creply, local: true do |f|
+      .form-group
+        = f.label :reply, "返信"
+        = f.text_area :reply, class: 'form-control'
+      = f.submit '投稿する', class: 'btn btn-info'
+
+  = @comment.comment
