@@ -9,6 +9,6 @@
     h1 コメント投稿
     = form_with model: @comment, local: true do |f|
       .form-group
-        = f.label :comment, 'コメント'
+        = f.label :comment
         = f.text_area :comment, class: 'form-control'
       = f.submit '投稿する', class: 'btn btn-info'
