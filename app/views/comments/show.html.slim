@@ -1,17 +1,14 @@
-.commentshow
-  h1 コメント詳細
-  .container
-    raw.justify-content-center
-      .comment_show.col-8
-        ul.nav.flex-column
-          li.nav-item
-            = @commetn.user_id
-          li.nav-item
-            = @comment.comment
-          li.nav-item
-            = link_to 'コメントする', users_path, class: 'btn btn-success' 
-            = link_to '削除', comment_path(comment), method: :delete,
-            data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete' 
-
-
-            
+  .show_comment
+    h1 コメント詳細
+    .comment_text.shadow-lg.p-3.mb-5.bg-white.rounded
+      ul.nav.flex-column
+        li.nav-item
+          = @comment.user_id
+        li.nav-item
+          = @comment.comment
+        li.nav-item
+          = "ハート #{@comment.created_at}"
+        li.nav-item.d-flex.justify-content-end
+          = link_to 'コメントする', users_path, class: 'btn btn-success' 
+          = link_to '削除', comment_path(@comment), method: :delete,
+          data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'            

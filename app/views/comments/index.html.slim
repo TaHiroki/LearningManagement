@@ -7,7 +7,7 @@
   	    = link_to 'コメント登録', new_comment_path, class: 'btn btn-info' 
 
       - @comments.each do |comment|
-        .comment.shadow.p-3.mb-5.bg-white.rounded
+        .comment.shadow-lg.p-3.mb-5.bg-white.rounded
           p = comment.user_id
           p = comment.comment
           p.time = "ハート #{comment.created_at}"
