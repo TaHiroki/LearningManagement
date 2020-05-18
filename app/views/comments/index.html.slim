@@ -4,7 +4,7 @@
   .comments.col-sm.col-md-7.col-lg-8
 	  h1 コメント一覧
       .d-flex.justify-content-end
-  	    = link_to 'コメント登録', users_path, class: 'btn btn-info' 
+  	    = link_to 'コメント登録', new_comment_path, class: 'btn btn-info' 
 
       - @comments.each do |comment|
         .comment.shadow.p-3.mb-5.bg-white.rounded
@@ -12,7 +12,6 @@
           p = comment.comment
           p.time = "ハート #{comment.created_at}"
           .d-flex.justify-content-end
-            = link_to '編集', users_path, class: 'btn btn-primary' 
             = link_to '削除', users_path, class: 'btn btn-danger' 
 
 
