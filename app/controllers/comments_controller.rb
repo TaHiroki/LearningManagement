@@ -12,7 +12,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = 1
 
-    redirect_to comments_path, notice: "コメントを投稿しました！"
+    if @comment.save
+      redirect_to comments_path, notice: "コメントを投稿しました！"
+    else
+      render :new
+    end
   end
 
   private
