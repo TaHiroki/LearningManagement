@@ -1,20 +1,15 @@
 /* index-------------------*/
 .comments {
-  margin-top: 10px;
-  height: 500px;
-  overflow-y: scroll;
+  margin-top: 60px;
+  .time {
+    float: left;
+  }
   .comment {
     margin-right: 40px;
-    .btn {
-      margin: 10px 20px; 
-    }
+    margin-top: 15px;
   }
-
 }
 
-.send_comment {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    height: 200px;
+.btn {
+  margin: 0px 20px; 
 }
