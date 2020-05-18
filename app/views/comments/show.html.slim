@@ -1,0 +1,17 @@
+.commentshow
+  h1 コメント詳細
+  .container
+    raw.justify-content-center
+      .comment_show.col-8
+        ul.nav.flex-column
+          li.nav-item
+            = @commetn.user_id
+          li.nav-item
+            = @comment.comment
+          li.nav-item
+            = link_to 'コメントする', users_path, class: 'btn btn-success' 
+            = link_to '削除', comment_path(comment), method: :delete,
+            data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete' 
+
+
+            
