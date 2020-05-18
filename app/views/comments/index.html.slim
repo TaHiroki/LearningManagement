@@ -8,7 +8,7 @@
 
       - @comments.each do |comment|
         .comment.shadow-lg.p-3.mb-5.bg-white.rounded
-          p = comment.user_id
+          p = comment.user.name
           p = comment.comment
           p.time = "ハート #{comment.created_at}"
           .d-flex.justify-content-end
