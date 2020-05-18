@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'replys/index'
   root to: 'users#index'
   resources :comments
   resources :users do
