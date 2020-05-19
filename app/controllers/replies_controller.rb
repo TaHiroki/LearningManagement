@@ -16,6 +16,12 @@ class RepliesController < ApplicationController
     end
   end
 
+  def destroy
+    @reply = Reply.find(params[:id])
+    @reply.destroy
+    redirect_to comment_path(re_params["re"]), notice: "コメントを削除しました。"
+  end
+
   private
 
   def reply_params

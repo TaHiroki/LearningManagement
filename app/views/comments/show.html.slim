@@ -25,6 +25,7 @@
           li.nav-item
             = "ハート #{reply.created_at}"
           li.nav-item.d-flex.justify-content-end
-            = link_to '削除', reply_path(reply), method: :delete,
-            data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'   
+            = form_with model: reply, method: :delete, local: true do |f|
+              = f.hidden_field :re, value: @comment.id
+              = f.submit '削除', data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'   
 
