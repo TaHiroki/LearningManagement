@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'users#index'
-  resources :comments, :replys
+  resources :comments, :replies
   resources :users do
     collection do
       get :login

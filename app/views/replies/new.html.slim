@@ -1,0 +1,22 @@
+- if @reply.errors.present?
+  .alert.alert-danger.text-center role="alert"
+    h4.alert-heading コメントを入力して下さい
+    - @reply.errors.full_messages.each do |message|
+      p = message
+
+.container
+  .makereply
+    h1 コメントに返信
+    .comment.shadow-lg.p-3.mb-5.bg-white.rounded
+            p = @comment.user.name
+            p = @comment.comment
+            p.time = "ハート #{@comment.created_at}"
+
+    .makereply
+      = form_with model: @reply, local: true do |f|
+        .form-group
+          = f.label :reply, "返信"
+          = f.text_area :reply, class: 'form-control'
+        .form-group
+          = f.hidden_field :re, value: @comment.id
+        = f.submit '投稿する', class: 'btn btn-info'
