@@ -13,4 +13,18 @@
             = f.hidden_field :re, value: @comment.id
             = f.submit 'コメントする', class: 'btn btn-success'
           = link_to '削除', comment_path(@comment), method: :delete,
-          data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'            
+          data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'   
+    
+    - @replies.each do |reply|
+      .comment_text.shadow-lg.p-3.mb-5.bg-white.rounded
+        ul.nav.flex-column
+          li.nav-item
+            = reply.reply
+          li.nav-item
+            = reply.reply
+          li.nav-item
+            = "ハート #{reply.created_at}"
+          li.nav-item.d-flex.justify-content-end
+            = link_to '削除', reply_path(reply), method: :delete,
+            data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'   
+
