@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
+    @replies = Reply.all
   end
 
   def destroy

@@ -7,8 +7,13 @@ class RepliesController < ApplicationController
   def create
     @reply = Reply.new(reply_params)
     @comment = Comment.find(re_params["re"])
-    flash[:notice] = "コメントに返信しました！"
-    render template: "comments/show"
+    @reply.comment_id = @comment.id
+    
+    if @reply.save
+      redirect_to comment_path(@comment), notice: "コメントに返信しました！"
+    else
+      render :new
+    end
   end
 
   private
