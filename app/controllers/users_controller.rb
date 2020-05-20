@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.delete_flag = 0
 
     if @user.save
       session[:user_id] = @user.id
@@ -44,7 +45,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user = @current_user
-    @user.destroy
+    @user.delete_flag = 1
+    @user.save
     session[:user_id] = nil
     redirect_to login_users_path, notice: "ユーザーを削除しました"
   end
@@ -55,9 +57,12 @@ class UsersController < ApplicationController
   def loginpage
     @user = User.find_by(email: params[:email])
 
-    if @user&.authenticate(params[:password])
+    if @user&.authenticate(params[:password]) && @user.delete_flag == 0
       session[:user_id] = @user.id
       redirect_to users_path, notice: "#{@user.name}様、ログインしました！"
+    elsif @user&.authenticate(params[:password]) && @user.delete_flag == 1
+      flash[:notice] = '削除されたアカウントです。'
+      render :login
     else
       flash[:notice] = '入力内容に間違いがあるか、未入力な箇所があります。'
       render :login
