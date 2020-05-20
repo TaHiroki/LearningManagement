@@ -59,14 +59,18 @@ li img {
     }
 
     .login {
-        button {
-        margin: 30px;
+        .btn1 {
+        margin:30px;
         }
     }
 
     .easylogin {
-        margin-left: 30px;
+        margin-top: 30px;
     }
+}
+
+.login_modal {
+    padding-top: 10px;
 }
 
 @media(max-width: 780px){
