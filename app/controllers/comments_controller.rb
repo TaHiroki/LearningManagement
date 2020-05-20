@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def index
     @comments = Comment.all
-    @user = User.find(1)
+    @user = @current_user
   end
 
   def new
@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.user_id = 1
+    @comment.user_id = @current_user.id
 
     if @comment.save
       redirect_to comments_path, notice: "コメントを投稿しました！"
