@@ -9,15 +9,23 @@
     h1 = chapter
     = form_with model: user, local: true do |f|
       .form-group
-        = f.label :name
+        = f.label '名前（必須）'
         = f.text_field :name, class: 'form-control'
       .form-group
-        = f.label :email
+        = f.label 'メールアドレス（必須）'
         = f.text_field :email, class: 'form-control'
       .form-group
-        = f.label :password
+        = f.label 'パスワード（必須）'
         = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label :password_confirmation, 'パスワード（確認）'
+        = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label :image
+        = f.file_field :image, class: 'form-control'
       .form-group
         = f.label :introduction
         = f.text_area :introduction, class: 'form-control'
+      p.text-right ※写真と自己紹介は後からでも入力できます
       = f.submit '登録する', class: 'btn btn-info'
+    

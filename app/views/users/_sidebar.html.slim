@@ -3,7 +3,10 @@
     ul.nav.flex-column
       li.nav-item
         .user_img
-          img src="/user-image/user1.png" 
+          - if user.image.attached?
+            = image_tag user.image
+          - else
+            img src="/user-image/user1.png" 
       li.nav-item
         p = user.name
       li.nav-item
