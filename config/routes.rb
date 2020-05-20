@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'users#login'
-  resources :comments, only: [:index, :new, :show]
-  resources :replies, only: [:new]
+  resources :comments, only: [:index, :new, :create, :show, :destroy]
+  resources :replies, only: [:new, :create, :destroy]
   resources :users do
     collection do
       get :login
