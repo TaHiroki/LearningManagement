@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    @user = User.find(1)
   end
 
   def edit
@@ -51,14 +51,20 @@ class UsersController < ApplicationController
   end
 
   def loginpage
-    user = User.find_by(email: session_params[:email])
+    @user = User.find_by(email: params[:email])
 
-    if user&.authenticate(session_params[:password])
-      session[:user_id] = user.id
-      redirect_to users_path, notice: "#{@email.email}様、ログインしました！"
+    if @user&.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to users_path, notice: "#{@user.name}様、ログインしました！"
     else
+      flash[:notice] = '入力内容に間違いがあるか、未入力な箇所があります。'
       render :login
     end
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to login_users_path, notice: "ログアウトしました。"
   end
 
   private

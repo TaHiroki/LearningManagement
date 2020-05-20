@@ -19,6 +19,8 @@ html
           = link_to 'コメント一覧', comments_path, class: 'nav-link'
         li.nav-item
           = link_to 'ログイン', login_users_path, class: 'nav-link'
+        li.nav-item
+          = link_to 'ログアウト', logout_users_path, method: :post, class: 'nav-link'
   #main
     -if flash[:notice].present?
       .flash.alert.alert-success role="alert"
