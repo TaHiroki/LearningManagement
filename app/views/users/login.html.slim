@@ -17,7 +17,7 @@
                 button.close type="button" data-dismiss="modal" aria-label="Close"
                   span aria-hidden="true" &times;
               .modal-body
-                = form_with scope: :session, url: loginpage_users_path, local: true do |f|
+                = form_with  url: loginpage_users_path, local: true do |f|
                   .form-group
                     = f.label :email
                     = f.text_field :email, class: 'form-control', id: 'session_email'
