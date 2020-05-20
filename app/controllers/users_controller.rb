@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @user = User.find(1)
+    @user = @current_user
     @comments = Comment.all.order(created_at: :desc).limit(3)
 
     @boxes = Array.new(10)
@@ -23,16 +23,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(1)
+    @user = @current_user
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = @current_user
     @chapter = 'アカウント編集'
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = @current_user
     
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "ユーザー「#{@user.name}」を更新しました!"
@@ -42,8 +42,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = @current_user
     @user.destroy
+    session[:user_id] = nil
     redirect_to login_users_path, notice: "ユーザーを削除しました"
   end
 
