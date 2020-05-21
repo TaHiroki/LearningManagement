@@ -1,2 +1,26 @@
-h1 Friends#index
-p Find me in app/views/friends/index.html.slim
+= render partial: 'users/sidebar', locals: {user: @user}
+
+.row.justify-content-end
+  .comments.col-sm.col-md-7.col-lg-8
+	  h1 フレンド一覧
+
+      
+
+      - @friends.each do |friend|
+        .comment.shadow-lg.p-3.mb-5.bg-white.rounded
+          .friend-text.d-flex.flex-row
+            .friend-img.mr-3
+              - if friend.image.attached?
+                = image_tag friend.image
+              - else
+                img src="/user-image/user1.png" 
+            .friend-details.mr-5
+              p = "#{friend.name}"
+            .friend-introduction
+              p 自己紹介
+              p = "#{friend.introduction}"
+
+          .d-flex.justify-content-end
+            = link_to '詳細',friend_path(friend), class: 'btn btn-primary' 
+            = link_to 'フレンドになる',users_path, class: 'btn btn-success' 
+            = link_to 'フレンドをやめる',users_path, class: 'btn btn-danger'

@@ -1,0 +1,14 @@
+.usershow
+  h1 フレンド詳細
+  ul.nav.flex-column
+      li.nav-item
+        .user_img
+          = image_tag @friend.image
+      li.nav-item
+        p = @friend.name
+      li.nav-item
+        = link_to 'フレンドになる', users_path, class: 'btn btn-primary button'
+        = link_to 'フレンドをやめる', users_path, class: 'btn btn-primary button'
+      li.nav-itme.border
+        p 自己紹介
+        = @friend.introduction

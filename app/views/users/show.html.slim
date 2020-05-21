@@ -3,7 +3,7 @@
   ul.nav.flex-column
       li.nav-item
         .user_img
-          img src="/user-image/user1.png" 
+          = image_tag @current_user.image
       li.nav-item
         p = @user.name
       li.nav-item

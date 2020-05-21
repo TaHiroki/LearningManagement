@@ -18,6 +18,8 @@ html
           li.nav-item
             = link_to 'アカウント詳細', user_path(@current_user.id), class: 'nav-link'
           li.nav-item
+            = link_to 'フレンド一覧', friends_path, class: 'nav-link'
+          li.nav-item
             = link_to '進捗', users_path, class: 'nav-link'
           li.nav-item
             = link_to 'コメント一覧', comments_path, class: 'nav-link'
