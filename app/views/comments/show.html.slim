@@ -7,7 +7,7 @@
         li.nav-item
           = @comment.comment
         li.nav-item
-          = "ハート #{@comment.created_at}"
+          = "ハート #{@comment.created_at.strftime("%Y/%m/%d %H:%M")}"
         li.nav-item.d-flex.justify-content-end
           = form_with url: new_reply_path, method: :get, local: true do |f|
             = f.hidden_field :re, value: @comment.id
@@ -23,7 +23,7 @@
           li.nav-item
             = reply.reply
           li.nav-item
-            = "ハート #{reply.created_at}"
+            = "ハート #{reply.created_at.strftime("%Y/%m/%d %H:%M")}"
           li.nav-item.d-flex.justify-content-end
             = form_with model: reply, method: :delete, local: true do |f|
               = f.hidden_field :re, value: @comment.id
