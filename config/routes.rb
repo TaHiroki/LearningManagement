@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
+  get 'friends/index'
   root to: 'users#login'
 
   resources :comments, only: [:index, :new, :create, :show, :destroy]
   resources :replies, only: [:new, :create, :destroy]
+  resources :friends, only: [:index]
   resources :fites, only: [:destroy]  do
     member do
       post :create
     end
   end
   
-
   resources :users do
     collection do
       get :login
