@@ -12,10 +12,12 @@
               = link_to fite_path(@comment.id), method: :delete do
                 i.fas.fa-hand-rock.un-fite
                 = "#{@count}"
+                - session[:page] = 0
             -else             
               = link_to fite_path(@comment.id), method: :post do
                 i.fas.fa-hand-rock.fite
                 = "ファイト！ #{@count}"
+                - session[:page] = 0
           .time
             = "#{@comment.created_at.strftime("%Y/%m/%d %H:%M")}"
         li.nav-item.d-flex.justify-content-end

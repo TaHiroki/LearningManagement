@@ -14,8 +14,15 @@ class FitesController < ApplicationController
 
   def to_show
     @comment = Comment.find(params[:id])
+    @comments = Comment.all
     @replies = Reply.all
     @count = Fite.where(comment_id: @comment.id).count
-    render template: "comments/show"
+    if session[:page] == 1
+      session[:page] = nil
+      render template: "comments/index"
+    else
+      session[:page] = nil
+      render template: "comments/show"
+    end
   end
 end

@@ -3,13 +3,13 @@
     ul.nav.flex-column
       li.nav-item
         .user_img
-          - if user.image.attached?
-            = image_tag user.image
+          - if @current_user.image.attached?
+            = image_tag @current_user.image
           - else
             img src="/user-image/user1.png" 
       li.nav-item
-        p = user.name
+        p = @current_user.name
       li.nav-item
-        = link_to '編集', edit_user_path(user), class: 'btn btn-primary button'
+        = link_to '編集', edit_user_path(@current_user), class: 'btn btn-primary button'
       li.nav-itme
         p 実施個数表示
