@@ -22,6 +22,8 @@ class CommentsController < ApplicationController
   def show
     @comment = Comment.find(params[:id])
     @replies = Reply.all
+    @count = Fite.where(comment_id: @comment.id).count
+
   end
 
   def destroy
