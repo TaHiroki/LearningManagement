@@ -47,6 +47,7 @@
 			- @comments.each do |comment|
 				.three_comment.shadow-lg.p-1.m-2.bg-white.rounded
 					p = "#{comment.user.name} : #{comment.comment}"
+					p = "#{comment.created_at.strftime("%Y/%m/%d %H:%M")}"
 
 
 
