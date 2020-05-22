@@ -13,14 +13,16 @@ class FriendsController < ApplicationController
     render :index
   end
 
-  def edit #フレンド全検索
+  def edit #ユーザー全検索
+    @friends = User.all.order(created_at: :desc)
+    render :index
   end
 
   def show #フレンド詳細
     @friend = User.find(params[:id])
   end
 
-  def edit #フレンドになる
+  def create #フレンドになる
   end
 
   def delete #フレンドやめる
