@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:index, :new, :create, :show, :destroy]
   resources :replies, only: [:new, :create, :destroy]
-  resources :friends
+
+  resources :friends, except: [:create, :update] do
+    member do
+      post :create
+    end
+  end
 
   resources :fites, only: [:destroy]  do
     member do
