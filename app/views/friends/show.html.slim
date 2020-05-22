@@ -7,8 +7,11 @@
       li.nav-item
         p = @friend.name
       li.nav-item
-        = link_to 'フレンドになる', users_path, class: 'btn btn-primary button'
-        = link_to 'フレンドをやめる', users_path, class: 'btn btn-primary button'
+        = link_to 'フレンド一覧', friends_path, class: 'btn btn-primary'
+        - if Friend.find_by(master: @current_user.id, user_id: @friend.id)
+          = link_to 'フレンドをやめる',users_path, class: 'btn btn-danger'
+        -else
+          = link_to 'フレンドになる',users_path, class: 'btn btn-success' 
       li.nav-itme.border
         p 自己紹介
         = @friend.introduction

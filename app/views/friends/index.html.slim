@@ -5,6 +5,7 @@
 	  h1 フレンド一覧
 
       = link_to '全ユーザー一覧', edit_friend_path(@current_user.id), class: 'btn btn-primary m-3'
+      = link_to 'フレンド一覧', friends_path, class: 'btn btn-info'
 
       = form_with url: new_friend_path, method: :get, local: true do |f|
         .container
@@ -36,6 +37,9 @@
                 p = "#{friend.introduction}"
 
           .d-flex.justify-content-end
-            = link_to '詳細',friend_path(friend), class: 'btn btn-primary' 
-            = link_to 'フレンドになる',users_path, class: 'btn btn-success' 
-            = link_to 'フレンドをやめる',users_path, class: 'btn btn-danger'
+            - if friend.delete_flag == 0
+              = link_to '詳細',friend_path(friend), class: 'btn btn-primary' 
+              - if Friend.find_by(master: @current_user.id, user_id: friend.id)
+                = link_to 'フレンドをやめる',users_path, class: 'btn btn-danger'
+              -else
+                = link_to 'フレンドになる',users_path, class: 'btn btn-success' 
