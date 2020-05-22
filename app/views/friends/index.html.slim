@@ -17,29 +17,32 @@
               = f.submit '検索', class: 'btn btn-primary'
 
       - @friends.each do |friend|
-        .comment.shadow-lg.p-3.mb-5.bg-white.rounded
-          .friend-text.d-flex.flex-row
-            .friend-img.mr-3
-              - if friend.image.attached?
-                = image_tag friend.image
-              - else
-                img src="/user-image/user1.png" 
-            .friend-details.mr-5
-              - if friend.delete_flag == 1
-                p 削除されています。
-              - else
-                p = "#{friend.name}"
-            .friend-introduction
-              - if friend.delete_flag == 1
-                p
-              -else
-                p 自己紹介
-                p = "#{friend.introduction}"
+        - if friend.id != @current_user.id
+          .comment.shadow-lg.p-3.mb-5.bg-white.rounded
+            .friend-text.d-flex.flex-row
+              .friend-img.mr-3
+                - if friend.image.attached?
+                  = image_tag friend.image
+                - else
+                  img src="/user-image/user1.png" 
+              .friend-details.mr-5
+                - if friend.delete_flag == 1
+                  p 削除されています。
+                  p = "ユーザーID:#{friend.id}"
+                - else
+                  p = "#{friend.name}"
+                  p = "ユーザーID:#{friend.id}"
+              .friend-introduction
+                - if friend.delete_flag == 1
+                  p
+                -else
+                  p 自己紹介
+                  p = "#{friend.introduction}"
 
-          .d-flex.justify-content-end
-            - if friend.delete_flag == 0
-              = link_to '詳細',friend_path(friend), class: 'btn btn-primary' 
-              - if Friend.find_by(master: @current_user.id, user_id: friend.id)
-                = link_to 'フレンドをやめる',users_path, class: 'btn btn-danger'
-              -else
-                = link_to 'フレンドになる',users_path, class: 'btn btn-success' 
+            .d-flex.justify-content-end
+              - if friend.delete_flag == 0
+                = link_to '詳細',friend_path(friend), class: 'btn btn-primary' 
+                - if Friend.find_by(master: @current_user.id, user_id: friend.id)
+                  = link_to 'フレンドをやめる', friend_path(friend), method: :delete, class: 'btn btn-danger'
+                -else
+                  = link_to 'フレンドになる', friend_path(friend), method: :post, class: 'btn btn-success' 
