@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-  def index
+  def index #フレンド一覧
     users = Friend.where(master: @current_user).order(created_at: :desc)
     @friends = []
     users.each do |user|
@@ -7,7 +7,23 @@ class FriendsController < ApplicationController
     end
   end
 
-  def show
+  def new #フレンド検索
+    @friends = []
+    @friends << User.find(params[:friend_id])
+    render :index
+  end
+
+  def edit #フレンド全検索
+  end
+
+  def show #フレンド詳細
     @friend = User.find(params[:id])
   end
+
+  def edit #フレンドになる
+  end
+
+  def delete #フレンドやめる
+  end
+
 end
