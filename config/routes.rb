@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:index, :new, :create, :show, :destroy]
   resources :replies, only: [:new, :create, :destroy]
-  resources :friends, only: [:index, :show, :create, :destroy]
+  resources :friends
 
   resources :fites, only: [:destroy]  do
     member do
