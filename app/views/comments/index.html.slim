@@ -25,6 +25,7 @@
                   = "ファイト！" 
             .time.ml-3
               = "#{comment.created_at.strftime("%Y/%m/%d %H:%M")}"
+              
           .d-flex.justify-content-end
             = link_to '詳細', comment_path(comment), class: 'btn btn-primary' 
             = form_with url: new_reply_path, method: :get, local: true do |f|
