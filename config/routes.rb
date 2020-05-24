@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'subjects/new'
+  get 'subjects/created'
+  get 'subjects/destroy'
   get 'friends/index'
   root to: 'users#login'
 
