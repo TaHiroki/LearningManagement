@@ -1,10 +1,11 @@
-= render partial: 'sidebar', locals: {user: @user}
+= render partial: 'sidebar'
 
 .row.justify-content-end
   .main.col-sm.col-md-7.col-lg-8
 		h2 進捗状況
+		= link_to '科目編集', subjects_path, class: 'btn btn-primary'
 		= link_to '科目登録', new_subject_path, class: 'btn btn-info' 
-		
+	
 		table.table
 			tbody
 				- @Masters.each do |master|
@@ -24,6 +25,3 @@
 				.three_comment.shadow-lg.p-1.m-2.bg-white.rounded
 					p = "#{comment.user.name} : #{comment.comment}"
 					p = "#{comment.created_at.strftime("%Y/%m/%d %H:%M")}"
-
-
-
