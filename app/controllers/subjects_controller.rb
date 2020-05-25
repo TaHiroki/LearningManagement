@@ -1,4 +1,8 @@
 class SubjectsController < ApplicationController
+def index
+  @subjects = Subject.where(user_id: @current_user.id)
+end
+
   def new
     @subject = Subject.new
   end
