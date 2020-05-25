@@ -11,6 +11,7 @@ class SubjectsController < ApplicationController
   end
 
   def destroy
+    @test
   end
 
   private
