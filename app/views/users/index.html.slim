@@ -3,41 +3,17 @@
 .row.justify-content-end
   .main.col-sm.col-md-7.col-lg-8
 		h2 進捗状況
-		= link_to '科目登録', users_path, class: 'btn btn-info' 
+		= link_to '科目登録', new_subject_path, class: 'btn btn-info' 
 		
 		table.table
 			tbody
-				tr
-					th 英語
-					td.row
-						- @boxes.each do |box|
-							== box
-				tr
-					th 数学
-					td.row
-						.box1.col-1.border.border-dark
-						.box1.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-									tr
-					th 国語
-					td.row
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
-						.box1.count.col-1.border.border-dark
+				- @Masters.each do |master|
+					tr
+						th = master[0]
+						td.row
+							- master[1].each do |box|
+								== box
+
 .row.justify-content-end
 	.new_comment.col-sm.col-md-7.col-lg-8
 		h2 最新のコメント

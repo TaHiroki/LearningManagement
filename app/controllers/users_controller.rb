@@ -3,8 +3,16 @@ class UsersController < ApplicationController
     @user = @current_user
     @comments = Comment.all.order(created_at: :desc).limit(3)
 
-    @boxes = Array.new(10)
-    10.times{ |n| @boxes << '<div class="box col-1 border border-dark" id='+"box#{n}"+'></div>' }
+    @subjects = Subject.where(user_id: @current_user.id)
+    @Masters = []
+      @subjects.each do |subject|
+        @a = Array.new(2)
+        @boxes = []
+        subject.count.times{ |n| @boxes << '<div class="box col-1 border border-dark" id='+"box#{n}"+'></div>' }
+        @a[0] = subject.subject
+        @a[1] = @boxes
+        @Masters << @a
+      end
   end
 
   def new
