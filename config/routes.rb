@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  get 'subjects/new'
-  get 'subjects/created'
-  get 'subjects/destroy'
-  get 'friends/index'
   root to: 'users#login'
 
   resources :comments, only: [:index, :new, :create, :show, :destroy]
   resources :replies, only: [:new, :create, :destroy]
+  resources :subjects
 
   resources :friends, except: [:create, :update] do
     member do
