@@ -9,9 +9,9 @@
       li.nav-item
         = link_to 'フレンド一覧', friends_path, class: 'btn btn-primary'
         - if Friend.find_by(master: @current_user.id, user_id: @friend.id)
-          = link_to 'フレンドをやめる',users_path, class: 'btn btn-danger'
+          = link_to 'フレンドをやめる', friend_path(@friend), method: :delete, class: 'btn btn-danger'
         -else
-          = link_to 'フレンドになる',users_path, class: 'btn btn-success' 
+          = link_to 'フレンドになる', friend_path(@friend), method: :post, class: 'btn btn-success' 
       li.nav-itme.border
         p 自己紹介
         = @friend.introduction

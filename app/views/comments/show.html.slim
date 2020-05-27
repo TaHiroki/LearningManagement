@@ -1,43 +1,44 @@
-  .show_comment
-    h1 コメント詳細
-    .comment_text.shadow-lg.p-3.mb-5.bg-white.rounded
+= render partial: 'users/sidebar'
+
+.show_comment
+  h1 コメント詳細
+  .comment_text.shadow-lg.p-3.mb-5.bg-white.rounded
+    ul.nav.flex-column
+      li.nav-item
+        = @comment.user.name
+      li.nav-item
+        = @comment.comment
+      li.nav-item.d-flex.justify-content-between
+        .hart
+          - if Fite.find_by(user_id: @current_user, comment_id: @comment.id) 
+            = link_to fite_path(@comment.id), method: :delete do
+              i.fas.fa-hand-rock.un-fite
+              = "#{@count}"
+              - session[:page] = 0
+          -else             
+            = link_to fite_path(@comment.id), method: :post do
+              i.fas.fa-hand-rock.fite
+              = "ファイト！ #{@count}"
+              - session[:page] = 0
+        .time
+          = "#{@comment.created_at.strftime("%Y/%m/%d %H:%M")}"
+      li.nav-item.d-flex.justify-content-end
+        = form_with url: new_reply_path, method: :get, local: true do |f|
+          = f.hidden_field :re, value: @comment.id
+          = f.submit 'コメントする', class: 'btn btn-success'
+        = link_to '削除', comment_path(@comment), method: :delete,
+        data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'   
+  
+  - @replies.each do |reply|
+    .comment_reply.shadow-lg.p-3.mb-5.bg-white.rounded
       ul.nav.flex-column
         li.nav-item
-          = @comment.user.name
+          = reply.comment.user.name
         li.nav-item
-          = @comment.comment
-        li.nav-item.d-flex.justify-content-between
-          .hart
-            - if Fite.find_by(user_id: @current_user, comment_id: @comment.id) 
-              = link_to fite_path(@comment.id), method: :delete do
-                i.fas.fa-hand-rock.un-fite
-                = "#{@count}"
-                - session[:page] = 0
-            -else             
-              = link_to fite_path(@comment.id), method: :post do
-                i.fas.fa-hand-rock.fite
-                = "ファイト！ #{@count}"
-                - session[:page] = 0
-          .time
-            = "#{@comment.created_at.strftime("%Y/%m/%d %H:%M")}"
+          = reply.reply
+        li.nav-item
+          = "ハート #{reply.created_at.strftime("%Y/%m/%d %H:%M")}"
         li.nav-item.d-flex.justify-content-end
-          = form_with url: new_reply_path, method: :get, local: true do |f|
+          = form_with model: reply, method: :delete, local: true do |f|
             = f.hidden_field :re, value: @comment.id
-            = f.submit 'コメントする', class: 'btn btn-success'
-          = link_to '削除', comment_path(@comment), method: :delete,
-          data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'   
-    
-    - @replies.each do |reply|
-      .comment_reply.shadow-lg.p-3.mb-5.bg-white.rounded
-        ul.nav.flex-column
-          li.nav-item
-            = reply.comment.user.name
-          li.nav-item
-            = reply.reply
-          li.nav-item
-            = "ハート #{reply.created_at.strftime("%Y/%m/%d %H:%M")}"
-          li.nav-item.d-flex.justify-content-end
-            = form_with model: reply, method: :delete, local: true do |f|
-              = f.hidden_field :re, value: @comment.id
-              = f.submit '削除', data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'   
-
+            = f.submit '削除', data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'

@@ -1,17 +1,22 @@
 class UsersController < ApplicationController
+  skip_before_action :login_required, only: [:login, :loginpage, :new, :create]
+
+
   def index
     @user = @current_user
     @comments = Comment.all.order(created_at: :desc).limit(3)
+    @heads = []
+    12.times {|m| @heads << '<div class="box col-1">' + "#{(m + 1)}" +'</div>'}
 
-    @subjects = Subject.where(user_id: @current_user.id).order(created_at: :asc)
+    subjects = Subject.where(user_id: @current_user.id).order(created_at: :asc)
     @Masters = []
-      @subjects.each do |subject|
-        @a = Array.new(2)
+      subjects.each do |subject|
+        a = Array.new(2)
         @boxes = []
         subject.count.times{ |n| @boxes << '<div class="box col-1 border border-dark" id='+"box#{n}"+'></div>' }
-        @a[0] = subject.subject
-        @a[1] = @boxes
-        @Masters << @a
+        a[0] = subject.subject
+        a[1] = @boxes
+        @Masters << a
       end
   end
 
