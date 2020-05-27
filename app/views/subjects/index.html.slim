@@ -8,5 +8,5 @@
       .subject.shadow-lg.p-3.m-5.bg-white.rounded.w-75
         = "科目：#{subject.subject}　　マス数：#{subject.count}個"
         .subject.d-flex.justify-content-end
-          = link_to '修正', users_path, class: 'btn btn-primary'
+          = link_to '修正', edit_subject_path(subject), class: 'btn btn-primary'
           = link_to '削除', users_path, class: 'btn btn-danger' 
