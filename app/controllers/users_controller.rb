@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = @current_user
     @comments = Comment.all.order(created_at: :desc).limit(3)
 
-    @subjects = Subject.where(user_id: @current_user.id)
+    @subjects = Subject.where(user_id: @current_user.id).order(created_at: :asc)
     @Masters = []
       @subjects.each do |subject|
         @a = Array.new(2)
