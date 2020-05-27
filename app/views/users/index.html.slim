@@ -7,6 +7,12 @@
 		= link_to '科目登録', new_subject_path, class: 'btn btn-info' 
 	
 		table.table
+			thrad
+				tr
+					th 科目	
+					td.row.text-center
+						- @heads.each do |head|
+							== head
 			tbody
 				- @Masters.each do |master|
 					tr
@@ -17,7 +23,7 @@
 
 .row.justify-content-end
 	.new_comment.col-sm.col-md-7.col-lg-8
-		h2 最新のコメント
+		h2 最新のコメント（最新３つ）
 		= link_to 'コメント登録', new_comment_path, class: 'btn btn-info' 
 
 		.comment_box

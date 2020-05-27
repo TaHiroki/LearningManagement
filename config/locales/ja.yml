@@ -17,7 +17,7 @@ ja:
         name: 氏名
         email: メールアドレス
         password: パスワード
-        password_confirmation: パスワード（再入力）
+        password_digest: パスワード（確認）
         img: 画像
         introduction: 自己紹介
       comment:
