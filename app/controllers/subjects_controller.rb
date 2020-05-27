@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
 def index
-  @subjects = Subject.where(user_id: @current_user.id)
+  @subjects = Subject.where(user_id: @current_user.id).order(created_at: :asc)
 end
 
   def new
@@ -35,6 +35,10 @@ end
   end
 
   def destroy
+    @subject = Subject.find(params[:id])
+    @subject.destroy
+    redirect_to users_path, notice: "科目を削除しました。"
+
   end
 
   private
