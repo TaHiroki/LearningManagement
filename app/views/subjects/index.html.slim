@@ -9,4 +9,5 @@
         = "科目：#{subject.subject}　　マス数：#{subject.count}個"
         .subject.d-flex.justify-content-end
           = link_to '修正', edit_subject_path(subject), class: 'btn btn-primary'
-          = link_to '削除', users_path, class: 'btn btn-danger' 
+          = link_to '削除', subject_path(subject), method: :delete,
+            data: { confirm: "科目を削除しますか？"}, class: 'btn btn-danger' 
