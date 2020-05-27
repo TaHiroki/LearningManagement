@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get :login
       post :loginpage
       post :logout
+      get :easylogin
     end
   
   end

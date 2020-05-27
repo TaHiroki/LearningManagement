@@ -11,6 +11,9 @@
         p = @current_user.name
         p = "ユーザーID: #{@current_user.id}"
       li.nav-item
-        = link_to '編集', edit_user_path(@current_user), class: 'btn btn-primary button'
+        - if @current_user.name == 'ユーザー１'
+          a.btn.btn-secondary data-toggle="popover" title="お試しアカウント" data-content="お試しのため編集できません" 編集
+        - else
+          = link_to '編集', edit_user_path(@current_user), class: 'btn btn-primary button'
       li.nav-itme
         p 実施個数表示

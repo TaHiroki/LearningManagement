@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :login_required, only: [:login, :loginpage, :new, :create]
+  skip_before_action :login_required, only: [:login, :loginpage, :new, :create, :easylogin]
 
 
   def index
@@ -80,6 +80,12 @@ class UsersController < ApplicationController
       flash[:notice] = '入力内容に間違いがあるか、未入力な箇所があります。'
       render :login
     end
+  end
+
+  def easylogin
+    @user = User.find_by(name: 'ユーザー１')
+    session[:user_id] = @user.id
+    redirect_to users_path, notice: "#{@user.name}様、ログインしました！これはお試しのアカウントです。"
   end
 
   def logout
