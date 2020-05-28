@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       post :logout
       get :easylogin
       get :use
+      post :boxsave
     end
   
   end
