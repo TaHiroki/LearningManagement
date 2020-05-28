@@ -1,10 +1,11 @@
 class FriendsController < ApplicationController
   def index #フレンド一覧
     users = Friend.where(master: @current_user).order(created_at: :desc)
-    @friends = []
+    fd = []
     users.each do |user|
-      @friends << User.find(user.user_id)
+      fd << User.find(user.user_id)
     end
+    @friends = Kaminari.paginate_array(fd).page(params[:page]).per(10)
   end
 
   def new #フレンド検索
@@ -14,7 +15,7 @@ class FriendsController < ApplicationController
   end
 
   def edit #ユーザー全検索
-    @friends = User.all.order(created_at: :desc)
+    @friends = User.page(params[:page]).per(10).order(created_at: :desc)
     render :index
   end
 
