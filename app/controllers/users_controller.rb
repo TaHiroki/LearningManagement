@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   def index
     @user = @current_user
     @comments = Comment.all.order(created_at: :desc).limit(3)
+    @friends = Friend.where(master: @current_user.id).count
+    @sb = Subject.where(user_id: @current_user.id).count
 
     subjects = Subject.where(user_id: @current_user.id).order(created_at: :asc)
     @Masters = []

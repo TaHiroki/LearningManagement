@@ -9,7 +9,6 @@
             img src="/user-image/user1.png" 
       li.nav-item
         p = @current_user.name
-        p = "ユーザーID: #{@current_user.id}"
       li.nav-item
         - if @current_user.name == 'ユーザー１'
           a.btn.btn-secondary data-toggle="popover" title="お試しアカウント" data-content="お試しのため編集できません" 編集
@@ -18,4 +17,7 @@
       li.nav-itme
         = link_to '使い方', use_users_path, class: 'btn btn-warning'
       li.nav-itme
-        p 実施個数表示
+        .status
+          p = "ユーザーID: #{@current_user.id}"
+          p = "フレンド数: #{@friends}人"
+          p = "科目数: #{@sb}"
