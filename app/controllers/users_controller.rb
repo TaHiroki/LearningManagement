@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       subjects.each do |subject|
         a = Array.new(2)
         @boxes = []
-        subject.count.times{ |n| @boxes << '<div class="box col-1 border border-dark" id='+"box#{n}"+'></div>' }
+        subject.count.times{ |n| @boxes << '<div class="box col-1 border border-dark square' + "#{n}" + '"></div>' }
         a[0] = subject.subject
         a[1] = @boxes
         @Masters << a
@@ -91,6 +91,10 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
     redirect_to login_users_path, notice: "ログアウトしました。"
+  end
+
+  def use
+
   end
 
   private

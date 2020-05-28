@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       post :loginpage
       post :logout
       get :easylogin
+      get :use
     end
   
   end

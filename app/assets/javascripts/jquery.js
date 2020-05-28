@@ -1,11 +1,10 @@
-$(document).on('turbolinks:load',function(){
+$(function(){
 
   $('.box').click(function(){
-    var x = "#" + this.id
-    if( $(x).css('background-color') == 'white'){
-      $(x).css('background-color', 'green');
-    } else {
-      $(x).css('background-color', 'white');
+    if($(this).css('background-color') == 'rgb(255, 255, 255)' ){
+      $(this).css('background-color', 'rgb(135, 206, 250');
+    }else {
+      $(this).css('background-color', 'white');
     }
   });
 
