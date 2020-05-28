@@ -5,15 +5,19 @@ class UsersController < ApplicationController
   def index
     @user = @current_user
     @comments = Comment.all.order(created_at: :desc).limit(3)
-    @heads = []
-    12.times {|m| @heads << '<div class="box col-1">' + "#{(m + 1)}" +'</div>'}
 
     subjects = Subject.where(user_id: @current_user.id).order(created_at: :asc)
     @Masters = []
       subjects.each do |subject|
         a = Array.new(2)
         @boxes = []
-        subject.count.times{ |n| @boxes << '<div class="box col-1 border border-dark square' + "#{n}" + '"></div>' }
+        subject.count.times{ |n| 
+          if n < subject.flag
+            @boxes << '<div class="box col-1 border border-dark" style="background-color:rgb(135, 206, 250)"><span>'+ "#{(n + 1)}" +'</span></div>' 
+          else
+            @boxes << '<div class="box col-1 border border-dark"><span>'+ "#{(n + 1)}" +'</span></div>' 
+          end
+        }
         a[0] = subject.subject
         a[1] = @boxes
         @Masters << a
@@ -94,7 +98,20 @@ class UsersController < ApplicationController
   end
 
   def use
+    @subjects = Subject.where(user_id: @current_user.id).order(created_at: :asc)
+  end
 
+  def boxsave
+    subjects = Subject.where(user_id: @current_user.id).order(created_at: :desc)
+    c = subjects.order(id: :desc).first.id
+    c.times{|n|
+      if params[:"#{n+1}"].present?
+        subject = subjects.find(n+1)
+        subject.flag = params[:"#{n+1}"]
+        subject.save
+      end
+      }
+    redirect_to users_path, notice: "進捗を保存しました！"
   end
 
   private

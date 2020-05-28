@@ -1,4 +1,4 @@
-$(function(){
+/* $(function(){
 
   $('.box').click(function(){
     if($(this).css('background-color') == 'rgb(255, 255, 255)' ){
@@ -6,6 +6,8 @@ $(function(){
     }else {
       $(this).css('background-color', 'white');
     }
+
+    var x = $(this).attr('id');
   });
 
-});
+}); */

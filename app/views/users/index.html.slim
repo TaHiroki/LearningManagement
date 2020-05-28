@@ -5,19 +5,14 @@
 		h2 進捗状況
 		= link_to '科目編集', subjects_path, class: 'btn btn-primary'
 		= link_to '科目登録', new_subject_path, class: 'btn btn-info' 
+		= link_to '進捗保存', use_users_path, class: 'btn btn-success'
 	
 		table.table
-			thrad
-				tr
-					th 科目	
-					td.row.text-center
-						- @heads.each do |head|
-							== head
 			tbody
 				- @Masters.each do |master|
 					tr
 						th = master[0]
-						td.row
+						td.row.text-center
 							- master[1].each do |box|
 								== box
 
