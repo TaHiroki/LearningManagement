@@ -1,4 +1,5 @@
-/* $(function(){
+/* 　後の更新時の参考に、boxを押すと色が変わる
+$(function(){
 
   $('.box').click(function(){
     if($(this).css('background-color') == 'rgb(255, 255, 255)' ){
