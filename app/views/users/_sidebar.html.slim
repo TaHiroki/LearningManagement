@@ -19,5 +19,5 @@
       li.nav-itme
         .status
           p = "ユーザーID: #{@current_user.id}"
-          p = "フレンド数: #{@friends}人"
-          p = "科目数: #{@sb}"
+          p = "フレンド数: #{session[:friends]}人"
+          p = "科目数: #{session[:sb]}"
