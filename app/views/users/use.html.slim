@@ -1,12 +1,11 @@
 = render partial: 'sidebar'
 
-.container
-  .row.justify-content-center.mt-5
-    .savesubject.mt-5
-      h1 進捗保存
-      = form_with url: boxsave_users_path , local: true do |f|
-        - @subjects.each do |subject|
-          .form-group.mt-5
-            = f.label subject.subject
-            = f.number_field subject.id, value: subject.flag, placeholder: '個数入力', class: 'form-control'
-        = f.submit '保存する', class: 'btn btn-info'
+.row.mt-5.justify-content-end
+  .savesubject.mt-5.col-sm.col-md-6.col-lg-7.mr-5.ml-5
+    h1 進捗保存
+    = form_with url: boxsave_users_path , local: true do |f|
+      - @subjects.each do |subject|
+        .form-group.mt-5
+          = f.label subject.subject
+          = f.number_field subject.id, value: subject.flag, placeholder: '個数入力', class: 'form-control'
+      = f.submit '保存する', class: 'btn btn-info'
