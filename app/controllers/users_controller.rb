@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     session[:sb] = Subject.where(user_id: @current_user.id).count
 
     subjects = Subject.where(user_id: @current_user.id).order(created_at: :asc)
-    @Masters = []
+    mt = []
       subjects.each do |subject|
         a = Array.new(2)
         @boxes = []
@@ -22,7 +22,8 @@ class UsersController < ApplicationController
         }
         a[0] = subject.subject
         a[1] = @boxes
-        @Masters << a
+        mt << a
+        @Masters = Kaminari.paginate_array(mt).page(params[:page]).per(3)
       end
   end
 
