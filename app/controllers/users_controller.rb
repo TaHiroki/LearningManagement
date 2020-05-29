@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @comments = Comment.all.order(created_at: :desc).limit(3)
     session[:friends] = Friend.where(master: @current_user.id).count
     session[:sb] = Subject.where(user_id: @current_user.id).count
+    @explanation = 1
 
     subjects = Subject.where(user_id: @current_user.id).order(created_at: :asc)
     mt = []
