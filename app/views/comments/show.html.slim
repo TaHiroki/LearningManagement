@@ -2,33 +2,34 @@
 
 .show_comment
   h1 コメント詳細
-  .comment_text.shadow-lg.p-3.mb-5.bg-white.rounded
-    ul.nav.flex-column
-      li.nav-item
-        = @comment.user.name
-      li.nav-item
-        = @comment.comment
-      li.nav-item.d-flex.justify-content-between
-        .hart
-          - if Fite.find_by(user_id: @current_user, comment_id: @comment.id) 
-            = link_to fite_path(@comment.id), method: :delete do
-              i.fas.fa-hand-rock.un-fite
-              = "#{@count}"
-              - session[:page] = 0
-          -else             
-            = link_to fite_path(@comment.id), method: :post do
-              i.fas.fa-hand-rock.fite
-              = "ファイト！ #{@count}"
-              - session[:page] = 0
-        .time
-          = "#{@comment.created_at.strftime("%Y/%m/%d %H:%M")}"
-      li.nav-item.d-flex.justify-content-end
-        = form_with url: new_reply_path, method: :get, local: true do |f|
-          = f.hidden_field :re, value: @comment.id
-          = f.submit 'コメントする', class: 'btn btn-success'
-        -if @comment.user.id == @current_user.id
-          = link_to '削除', comment_path(@comment), method: :delete,
-          data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'
+  .row.col-sm.col-md-7.col-lg-8.ml-5
+    .comment_text.shadow-lg.pt-3.pb-3.mb-5.bg-white.rounded
+      ul.nav.flex-column
+        li.nav-item
+          = @comment.user.name
+        li.nav-item
+          = @comment.comment
+        li.nav-item.d-flex.justify-content-between
+          .hart
+            - if Fite.find_by(user_id: @current_user, comment_id: @comment.id) 
+              = link_to fite_path(@comment.id), method: :delete do
+                i.fas.fa-hand-rock.un-fite
+                = "#{@count}"
+                - session[:page] = 0
+            -else             
+              = link_to fite_path(@comment.id), method: :post do
+                i.fas.fa-hand-rock.fite
+                = "ファイト！ #{@count}"
+                - session[:page] = 0
+          .time
+            = "#{@comment.created_at.strftime("%Y/%m/%d %H:%M")}"
+        li.nav-item.d-flex.justify-content-end
+          = form_with url: new_reply_path, method: :get, local: true do |f|
+            = f.hidden_field :re, value: @comment.id
+            = f.submit 'コメントする', class: 'btn btn-success'
+          -if @comment.user.id == @current_user.id
+            = link_to '削除', comment_path(@comment), method: :delete,
+            data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'
   
   .mt-5
     = paginate @replies
