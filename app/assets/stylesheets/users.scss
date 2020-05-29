@@ -5,6 +5,32 @@ header a{
         color: white;
     }
 }
+
+#headbarbtn {
+    font-size: 30px;
+    float: right;
+    display: none;
+    cursor: pointer;
+}
+
+#headbarbtn2 {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.bar2 {
+    display: none;
+}
+
+@media(max-width: 850px){
+    .bar1 {
+        display: none;
+    }
+    #headbarbtn{
+        display: initial;
+    }
+    
+}
 /* sidebar-------------------*/
 .sidebar {
     background-color: lightgray;

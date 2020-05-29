@@ -8,6 +8,16 @@ $(function(){
     $('#modalbg').fadeOut();
   });
 
+  $('#headbarbtn').click(function(){
+    $('.bar2').fadeIn(10);
+    $('#headbarbtn').fadeOut(10);
+  });
+
+  $('#headbarbtn2').click(function(){
+    $('.bar2').fadeOut(10);
+    $('#headbarbtn').fadeIn(10);
+  });
+
 
 
   /* 　後の更新時の参考に、boxを押すと色が変わる
