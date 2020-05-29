@@ -8,5 +8,5 @@
         - @subjects.each do |subject|
           .form-group.mt-5
             = f.label subject.subject
-            = f.number_field subject.id, class: 'form-control'
+            = f.number_field subject.id, value: subject.flag, placeholder: '個数入力', class: 'form-control'
         = f.submit '保存する', class: 'btn btn-info'

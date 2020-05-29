@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_one :fite
   has_many :friends
   has_many :subjects
+  has_many :replies
 end

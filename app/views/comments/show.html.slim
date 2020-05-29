@@ -26,19 +26,24 @@
         = form_with url: new_reply_path, method: :get, local: true do |f|
           = f.hidden_field :re, value: @comment.id
           = f.submit 'コメントする', class: 'btn btn-success'
-        = link_to '削除', comment_path(@comment), method: :delete,
-        data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'   
+        -if @comment.user.id == @current_user.id
+          = link_to '削除', comment_path(@comment), method: :delete,
+          data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'
+  
+  .mt-5
+    = paginate @replies
   
   - @replies.each do |reply|
     .comment_reply.shadow-lg.p-3.mb-5.bg-white.rounded
       ul.nav.flex-column
         li.nav-item
-          = reply.comment.user.name
+          = reply.user.name
         li.nav-item
           = reply.reply
         li.nav-item
-          = "ハート #{reply.created_at.strftime("%Y/%m/%d %H:%M")}"
-        li.nav-item.d-flex.justify-content-end
-          = form_with model: reply, method: :delete, local: true do |f|
-            = f.hidden_field :re, value: @comment.id
-            = f.submit '削除', data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'
+          = reply.created_at.strftime("%Y/%m/%d %H:%M")
+        -if reply.user.id == @current_user.id
+          li.nav-item.d-flex.justify-content-end
+            = form_with model: reply, method: :delete, local: true do |f|
+              = f.hidden_field :re, value: @comment.id
+              = f.submit '削除', data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'

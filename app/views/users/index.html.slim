@@ -7,17 +7,17 @@
 		= link_to '科目登録', new_subject_path, class: 'btn btn-info' 
 		= link_to '進捗保存', use_users_path, class: 'btn btn-success'
 			
-		.mt-5
-			= paginate @Masters
-	
-		table.table
-			tbody
-				- @Masters.each do |master|
-					tr
-						th = master[0]
-						td.row.text-center
-							- master[1].each do |box|
-								== box
+		- if @Masters != nil	
+			.mt-5
+				= paginate @Masters
+			table.table
+				tbody
+					- @Masters.each do |master|
+						tr
+							th = master[0]
+							td.row.text-center
+								- master[1].each do |box|
+									== box
 
 .row.justify-content-end
 	.new_comment.col-sm.col-md-7.col-lg-8

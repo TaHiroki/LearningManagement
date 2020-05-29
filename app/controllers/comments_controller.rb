@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
-    @replies = Reply.all
+    @replies = Reply.page(params[:page]).per(10).order(created_at: :desc)
     @count = Fite.where(comment_id: @comment.id).count
 
   end
