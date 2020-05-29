@@ -5,9 +5,9 @@
   .main.col-sm.col-md-7.col-lg-8
 		h2 進捗状況
 		.row.justify-content-end
-			= link_to '科目編集', subjects_path, class: 'btn btn-primary '
-			= link_to '科目登録', new_subject_path, class: 'btn btn-info' 
 			= link_to '進捗保存', use_users_path, class: 'btn btn-success'
+			= link_to '科目登録', new_subject_path, class: 'btn btn-info' 
+			= link_to '科目編集', subjects_path, class: 'btn btn-primary '
 			
 		- if @Masters != nil	
 			.mt-5
