@@ -13,21 +13,47 @@ html
   header
     nav.navbar.navbar-white.bg-dark.text-white.fixed-top
       a.navbar-brand LearningManagement
-      ul.nav
-        - if @current_user
-          li.nav-item
-            = link_to 'アカウント詳細', user_path(@current_user.id), class: 'nav-link'
-          li.nav-item
-            = link_to 'フレンド一覧', friends_path, class: 'nav-link'
-          li.nav-item
-            = link_to '進捗', users_path, class: 'nav-link'
-          li.nav-item
-            = link_to 'コメント一覧', comments_path, class: 'nav-link'
-          li.nav-item
-            = link_to 'ログアウト', logout_users_path, method: :post, class: 'nav-link'
-        - else
-          li.nav-item
-            = link_to 'ログインページ', login_users_path, class: 'nav-link'
+      .bar1
+        ul.nav
+          - if @current_user
+            li.nav-item
+              = link_to 'アカウント詳細', user_path(@current_user.id), class: 'nav-link'
+            li.nav-item
+              = link_to 'フレンド一覧', friends_path, class: 'nav-link'
+            li.nav-item
+              = link_to '進捗', users_path, class: 'nav-link'
+            li.nav-item
+              = link_to 'コメント一覧', comments_path, class: 'nav-link'
+            li.nav-item
+              = link_to 'ログアウト', logout_users_path, method: :post, class: 'nav-link'
+          - else
+            li.nav-item
+              = link_to 'ログインページ', login_users_path, class: 'nav-link'
+      #headbarbtn
+        i.fas.fa-align-justify
+      .bar2
+        ul.nav
+          .bar22
+            li.nav-item.d-flex.justify-content-end
+              #headbarbtn2
+                i.fas.fa-times
+            - if @current_user
+              li.nav-item
+                = link_to 'アカウント詳細', user_path(@current_user.id), class: 'nav-link'
+              li.nav-item
+                = link_to 'フレンド一覧', friends_path, class: 'nav-link'
+              li.nav-item
+                = link_to '進捗', users_path, class: 'nav-link'
+              li.nav-item
+                = link_to 'コメント一覧', comments_path, class: 'nav-link'
+              li.nav-item
+                = link_to 'ログアウト', logout_users_path, method: :post, class: 'nav-link'
+            - else
+              li.nav-item
+                = link_to 'ログインページ', login_users_path, class: 'nav-link'
+
+
+
       
   #main
     -if flash[:notice].present?
