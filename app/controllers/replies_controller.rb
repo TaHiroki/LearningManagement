@@ -8,6 +8,7 @@ class RepliesController < ApplicationController
     @reply = Reply.new(reply_params)
     @comment = Comment.find(re_params["re"])
     @reply.comment_id = @comment.id
+    @reply.user_id = @current_user.id
     
     if @reply.save
       redirect_to comment_path(@comment), notice: "コメントに返信しました！"
