@@ -11,6 +11,7 @@ end
   def create
     @subject = Subject.new(subject_params)
     @subject.user_id = @current_user.id
+    @subject.flag = 0
 
     if @subject.save
       redirect_to users_path, notice: '科目を登録しました！'
