@@ -19,6 +19,7 @@
                   i.fas.fa-hand-rock.un-fite
                   - session[:page] = 1
                   = Fite.where(comment_id: comment.id).count
+                  = "ファイト！"
               - else             
                 = link_to fite_path(comment.id), method: :post do
                   i.fas.fa-hand-rock.fite

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_053737) do
+ActiveRecord::Schema.define(version: 2020_05_30_074113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,51 +37,51 @@ ActiveRecord::Schema.define(version: 2020_05_29_053737) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "comment"
-    t.string "user_id"
+    t.text "comment", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "fites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "comment_id"
+    t.integer "user_id", null: false
+    t.integer "comment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "friends", force: :cascade do |t|
-    t.integer "master"
-    t.integer "user_id"
+    t.integer "master", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "replies", force: :cascade do |t|
-    t.text "reply"
-    t.integer "comment_id"
+    t.text "reply", null: false
+    t.integer "comment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.string "subject"
-    t.integer "user_id"
-    t.integer "count"
+    t.string "subject", null: false
+    t.integer "user_id", null: false
+    t.integer "count", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "flag"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
     t.integer "first"
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
+    t.string "password_digest", null: false
     t.integer "delete_flag"
   end
 
