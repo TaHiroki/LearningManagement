@@ -14,9 +14,10 @@ class FitesController < ApplicationController
 
   def to_show
     @comment = Comment.find(params[:id])
-    @comments = Comment.all
-    @replies = Reply.all
+    @comments = Comment.page(params[:page]).per(10).order(created_at: :desc)
+    @replies = Reply.page(params[:page]).per(3).order(created_at: :desc)
     @count = Fite.where(comment_id: @comment.id).count
+    @rp = Reply.page(params[:page]).per(3).order(created_at: :desc)
     if session[:page] == 1
       session[:page] = nil
       render template: "comments/index"

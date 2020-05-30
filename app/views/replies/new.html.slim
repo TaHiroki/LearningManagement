@@ -10,7 +10,7 @@
     .comment.shadow-lg.p-3.mb-5.bg-white.rounded
             p = @comment.user.name
             p = @comment.comment
-            p.time = "ハート #{@comment.created_at.strftime("%Y/%m/%d %H:%M")}"
+            p.time = "#{@comment.created_at.strftime("%Y/%m/%d %H:%M")}"
 
     .makereply
       = form_with model: @reply, local: true do |f|

@@ -2,7 +2,7 @@
 
 .row.justify-content-end
   .comments.col-sm.col-md-7.col-lg-8.ml-5
-	  h1 フレンド一覧
+	  h1 = @name
 
       = link_to '全ユーザー一覧', edit_friend_path(@current_user.id), class: 'btn btn-primary m-3'
       = link_to 'フレンド一覧', friends_path, class: 'btn btn-info'
