@@ -1,0 +1,66 @@
+= render partial: 'users/sidebar'
+
+.row.justify-content-end
+  h1.col-md-6.col-lg-7.pt-5 コメント詳細
+  .comment_text.shadow-lg.bg-white.rounded.col-sm.col-md-6.col-lg-7.m-5.pt-3.pb-3
+    .comment_box1.d-flex
+      .friend-img.mb-5
+        - if @comment.user.image.attached?
+          = image_tag @comment.user.image
+        - else
+          img src="/user-image/user1.png" 
+      .friend-details.mr-3.ml-5
+        - if @comment.user.delete_flag == 1
+          p = "削除されています。　　ユーザーID:#{@comment.user.id}"
+        - else
+          p = "#{@comment.user.name}　　ユーザーID:#{@comment.user.id}"
+        p = @comment.comment
+    .comment_box2.d-flex.justify-content-start
+      .hart.mr-3
+        - if Fite.find_by(user_id: @current_user, comment_id: @comment.id) 
+          = link_to fite_path(@comment.id), method: :delete do
+            i.fas.fa-hand-rock.un-fite
+            = "#{@count} ファイト！"
+            - session[:page] = 0
+        -else             
+          = link_to fite_path(@comment.id), method: :post do
+            i.fas.fa-hand-rock.fite
+            = "#{@count} ファイト！ "
+            - session[:page] = 0
+      .time
+        = "#{@comment.created_at.strftime("%Y/%m/%d %H:%M")}"
+    .comment_btn.d-flex.justify-content-end
+      = form_with url: new_reply_path, method: :get, local: true do |f|
+        = f.hidden_field :re, value: @comment.id
+        = f.submit 'コメントする', class: 'btn btn-success'
+      -if @comment.user.id == @current_user.id
+        = link_to '削除', comment_path(@comment), method: :delete,
+        data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete'
+
+.row.justify-content-end
+  .mt-5.ml-5.col-sm.col-md-6.col-lg-7
+    = paginate @replies
+
+.row.justify-content-end
+  .comment_text.shadow-lg.bg-white.rounded.col-sm.col-md-6.col-lg-7.m-5.pt-3.pb-3
+    - @replies.each do |reply|
+      .comment_reply.shadow-lg.p-3.mb-5.bg-white.rounded
+        .comment_box1.d-flex
+          .friend-img.mb-5
+            - if reply.user.image.attached?
+              = image_tag reply.user.image
+            - else
+              img src="/user-image/user1.png" 
+          .friend-details.mr-3.ml-5
+            - if reply.user.delete_flag == 1
+              p = "削除されています。　　ユーザーID:#{reply.user.id}"
+            - else
+              p = "#{reply.user.name}　　ユーザーID:#{reply.user.id}"
+            p = reply.reply
+            p = "#{reply.created_at.strftime("%Y/%m/%d %H:%M")}"
+        -if reply.user.id == @current_user.id
+          .reply_btn.d-flex.justify-content-end
+            = form_with model: reply, method: :delete, local: true do |f|
+              = f.hidden_field :re, value: @comment.id
+              = f.submit '削除', data: { confirm: "コメントを削除しますか？"},
+                class: 'btn btn-danger delete'

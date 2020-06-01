@@ -1,0 +1,27 @@
+.container-fluid 
+  .sidebar.d-none.d-md-block
+    ul.nav.flex-column
+      li.nav-item
+        .user_img
+          - if @current_user.image.attached?
+            = image_tag @current_user.image
+          - else
+            img src="/user-image/user1.png" 
+      li.nav-item
+        p = @current_user.name
+      li.nav-item
+        - if @current_user.name == 'ユーザー１'
+          a.btn.btn-secondary data-toggle="popover" title="お試しアカウント" data-content="お試しのため編集できません" 編集
+        - else
+          = link_to '編集', edit_user_path(@current_user), class: 'btn btn-primary button'
+      - if @explanation.present?
+        li.nav-itme
+          button.btn.btn-warning.text-white#explanationbtn type="button" 使い方
+      li.nav-itme
+        .status
+          p = "ユーザーID: #{@current_user.id}"
+          p = "フレンド数: #{session[:friends]}人"
+          p = "科目数: #{session[:sb]}"
+
+- if @explanation.present?
+  = render partial: 'explanation'
