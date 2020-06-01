@@ -25,3 +25,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# my select
+database.yml
+/db/*.sqlite3
+.DS_Store
