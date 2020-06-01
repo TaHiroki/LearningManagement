@@ -1,0 +1,20 @@
+.usershow
+  h1 フレンド詳細
+  ul.nav.flex-column
+      li.nav-item
+        .user_img
+          - if @friend.image.attached?
+            = image_tag @friend.image
+          - else
+            img src="/user-image/user1.png" 
+      li.nav-item
+        p = @friend.name
+      li.nav-item
+        = link_to 'フレンド一覧', friends_path, class: 'btn btn-primary'
+        - if Friend.find_by(master: @current_user.id, user_id: @friend.id)
+          = link_to 'フレンドをやめる', friend_path(@friend), method: :delete, class: 'btn btn-danger'
+        -else
+          = link_to 'フレンドになる', friend_path(@friend), method: :post, class: 'btn btn-success' 
+      li.nav-itme.border
+        p 自己紹介
+        = @friend.introduction

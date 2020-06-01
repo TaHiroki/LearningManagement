@@ -1,0 +1,42 @@
+/* index-------------------*/
+.comments {
+  margin-top: 60px;
+  .time {
+    float: left;
+  }
+  .comment {
+    margin-right: 40px;
+    margin-top: 15px;
+  }
+}
+
+.btn {
+  margin: 0px 30px; 
+}
+
+.hart a{
+  color: black;
+  text-decoration: none;
+}
+.fite {
+  color: gray;
+  padding-right: 10px;
+  font-size: 20px;
+}
+
+.un-fite {
+  color: red;
+  font-size: 20px;
+  padding-right: 10px;
+  font-size: 20px;
+
+}
+/* new-------------------*/
+.makecomment {
+  padding: 50px;
+}
+/* show-------------------*/
+.comment_reply {
+  width: 95%;
+}
+
