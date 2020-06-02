@@ -5,10 +5,10 @@
   .comment_text.shadow-lg.bg-white.rounded.col-sm.col-md-6.col-lg-7.m-5.pt-3.pb-3
     .comment_box1.d-flex
       .friend-img.mb-5
-        - if @comment.user.image.attached?
+        /- if @comment.user.image.attached?
           = image_tag @comment.user.image
-        - else
-          img src="/user-image/user1.png" 
+        /- else
+        img src="/user-image/user1.png" 
       .friend-details.mr-3.ml-5
         - if @comment.user.delete_flag == 1
           p = "削除されています。　　ユーザーID:#{@comment.user.id}"
