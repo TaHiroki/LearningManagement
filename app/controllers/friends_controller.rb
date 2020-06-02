@@ -6,7 +6,7 @@ class FriendsController < ApplicationController
       fd << User.find(user.user_id)
     end
     @friends = Kaminari.paginate_array(fd).page(params[:page]).per(10)
-    @name = 'フレンド一覧'
+    @name = 'フォロー一覧'
   end
 
   def new #フレンド検索
@@ -28,13 +28,13 @@ class FriendsController < ApplicationController
   def create #フレンドになる
     friend = Friend.new(master: @current_user.id, user_id: params[:id])
     friend.save
-    redirect_to friends_path, notice: "ユーザー：#{User.find(params[:id]).name}さんと、フレンドになりました！"
+    redirect_to friends_path, notice: "ユーザー：#{User.find(params[:id]).name}さんをフォローしました！"
   end
 
   def destroy #フレンドやめる
     friend = Friend.find_by(master: @current_user.id, user_id: params[:id])
     friend.destroy
-    redirect_to friends_path, notice: "ユーザー：#{User.find(params[:id]).name}さんと、フレンドをやめました。"
+    redirect_to friends_path, notice: "ユーザー：#{User.find(params[:id]).name}さんのフォローをやめました。"
   end
 
 end
