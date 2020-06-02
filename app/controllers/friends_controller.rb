@@ -28,12 +28,14 @@ class FriendsController < ApplicationController
   def create #フレンドになる
     friend = Friend.new(master: @current_user.id, user_id: params[:id])
     friend.save
+    session[:friends] = Friend.where(master: @current_user.id).count
     redirect_to friends_path, notice: "ユーザー：#{User.find(params[:id]).name}さんをフォローしました！"
   end
 
   def destroy #フレンドやめる
     friend = Friend.find_by(master: @current_user.id, user_id: params[:id])
     friend.destroy
+    session[:friends] = Friend.where(master: @current_user.id).count
     redirect_to friends_path, notice: "ユーザー：#{User.find(params[:id]).name}さんのフォローをやめました。"
   end
 
