@@ -34,4 +34,4 @@
  - flashを使っての簡易メッセージの表示
 
 ## 今後の学習・導入予定技術
-　RSpec　Docker　AWS(EC２,S3,RDS,Elastic IP,Route 53,CloudFront)
+　RSpec　Docker　AWS(EC２,S3,RDS,Elastic IP,Route 53,CloudFront)　Ajaxによる使用感の向上
