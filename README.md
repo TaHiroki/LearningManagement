@@ -7,10 +7,10 @@
 
 ## 使用技術
 　フロント：HTML(Slim),CSS(SCSS),JQuery,Bootstrap  
-  バックエンド：Ruby,Rails  
-  DB: PostgreSQL  
-  インフラ、その他: heroku,GitHub  
-  追加Gem: kaminari,i18n  
+　バックエンド：Ruby,Rails  
+　DB: PostgreSQL  
+　インフラ、その他: heroku,GitHub  
+　追加Gem: kaminari,i18n  
 
 ## 機能
  - ログイン/ログアウト（bootstrap modal)
@@ -34,4 +34,4 @@
  - flashを使っての簡易メッセージの表示
 
 ## 今後の学習・導入予定技術
-　RSpec Docker AWS(EC２,S3,RDS,Elastic IP,Route 53,CloudFront)
+　RSpec　Docker　AWS(EC２,S3,RDS,Elastic IP,Route 53,CloudFront)
