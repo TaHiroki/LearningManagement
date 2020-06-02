@@ -9,7 +9,7 @@
   	    = link_to 'コメント登録', new_comment_path, class: 'btn btn-info' 
 
       - @comments.each do |comment| 
-        .comment_reply.shadow-lg.p-3.mb-5.mt-5.bg-white.rounded
+        .comment_reply.shadow-lg.p-3.mb-5.mt-5.mr-5.bg-white.rounded
           .row.justify-content-start
             .comment_box1.col-5
               .friend-img.mb-5
@@ -17,29 +17,31 @@
                   = image_tag comment.user.image
                 /- else
                 img src="/user-image/user1.png" 
-              .hart.d-flex
-                - if Fite.find_by(user_id: @current_user, comment_id: comment.id) 
-                  = link_to fite_path(comment.id), method: :delete do
-                    i.fas.fa-hand-rock.un-fite
-                    - session[:page] = 1
-                    = Fite.where(comment_id: comment.id).count
-                    = "ファイト！"
-                - else             
-                  = link_to fite_path(comment.id), method: :post do
-                    i.fas.fa-hand-rock.fite
-                    - session[:page] = 1
-                    = Fite.where(comment_id: comment.id).count
-                    = "ファイト！"
-                time.ml-3
-                  p = "#{comment.created_at.strftime("%Y/%m/%d %H:%M")}"
             .friend-details.col-4
               p = comment.user.name
               p = comment.comment 
-          .d-flex.justify-content-end
-            = link_to '詳細', comment_path(comment), class: 'btn btn-primary' 
-            = form_with url: new_reply_path, method: :get, local: true do |f|
-              = f.hidden_field :re, value: comment.id
-              = f.submit 'コメントする', class: 'btn btn-success'
-            -if comment.user.id == @current_user.id
-              = link_to '削除', comment_path(comment), method: :delete,
-              data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete' 
+          .row
+            .hart.d-flex.ml-3
+              - if Fite.find_by(user_id: @current_user, comment_id: comment.id) 
+                = link_to fite_path(comment.id), method: :delete do
+                  i.fas.fa-hand-rock.un-fite
+                  - session[:page] = 1
+                  = Fite.where(comment_id: comment.id).count
+                  = "ファイト！"
+              - else             
+                = link_to fite_path(comment.id), method: :post do
+                  i.fas.fa-hand-rock.fite
+                  - session[:page] = 1
+                  = Fite.where(comment_id: comment.id).count
+                  = "ファイト！"
+              time.ml-3
+                p = "#{comment.created_at.strftime("%Y/%m/%d %H:%M")}"
+          .row.justify-content-end
+            .d-flex.mr-5
+              = link_to '詳細', comment_path(comment), class: 'btn btn-primary col-3' 
+              = form_with url: new_reply_path, method: :get, local: true do |f|
+                = f.hidden_field :re, value: comment.id
+                = f.submit 'コメントする', class: 'btn btn-success col-8'
+              -if comment.user.id == @current_user.id
+                = link_to '削除', comment_path(comment), method: :delete,
+                data: { confirm: "コメントを削除しますか？"}, class: 'btn btn-danger delete col-2' 
