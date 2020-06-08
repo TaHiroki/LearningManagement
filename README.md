@@ -10,7 +10,7 @@
 　フロント：HTML(Slim),CSS(SCSS),JQuery,Bootstrap  
 　バックエンド：Ruby,Rails  
 　DB: PostgreSQL  
-　インフラ、その他: heroku,GitHub  
+　インフラ、その他: heroku,Docker,GitHub  
 　追加Gem: kaminari,i18n  
 
 ## 機能
@@ -35,4 +35,4 @@
  - flashを使っての簡易メッセージの表示
 
 ## 今後の学習・導入予定技術
-　RSpec　Docker　AWS(EC２,S3,RDS,Elastic IP,Route 53,CloudFront)　Ajaxによる使用感の向上
+　RSpec　AWS(EC２,S3,RDS,Elastic IP,Route 53,CloudFront)　Ajaxによる使用感の向上
