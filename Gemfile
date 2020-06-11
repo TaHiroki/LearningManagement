@@ -76,3 +76,5 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'ransack'
 gem 'dotenv-rails'
+gem 'mini_magick'
+gem 'aws-sdk-s3', require: false
