@@ -13,10 +13,10 @@
           .row.justify-content-start
             .comment_box1.col-5
               .friend-img.mb-5
-                /- if comment.user.image.attached?
+                - if comment.user.image.attached?
                   = image_tag comment.user.image
-                /- else
-                img src="/user-image/user1.png" 
+                - else
+                  img src="/user-image/user1.png" 
             .friend-details.col-4
               p = comment.user.name
               p = comment.comment 
