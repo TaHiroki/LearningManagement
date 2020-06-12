@@ -3,9 +3,15 @@
 .row.mt-5.justify-content-end
   .savesubject.mt-5.col-sm.col-md-6.col-lg-7.mr-5.ml-5
     h1 進捗保存
+
     = form_with url: boxsave_users_path , local: true do |f|
       - @subjects.each do |subject|
         .form-group.mt-5
           = f.label subject.subject
           = f.number_field subject.id, value: subject.flag, placeholder: '個数入力', class: 'form-control'
-      = f.submit '保存する', class: 'btn btn-info'
+      - if @subjects.present?
+        = f.submit '保存する', class: 'btn btn-info'
+        = link_to '科目編集', subjects_path, class: 'btn btn-primary '
+      - else
+        p 科目の登録がありません。
+        = link_to '科目登録', new_subject_path, class: 'btn btn-info' 
