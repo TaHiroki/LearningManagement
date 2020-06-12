@@ -26,7 +26,7 @@
             .friend-text.d-flex.flex-row
               .friend-img.mr-5
                 - if friend.image.attached?
-                  = image_tag friend.image
+                  = image_tag friend.user.image
                 - else
                   img src="/user-image/user1.png" 
               .friend-details.mr-3
