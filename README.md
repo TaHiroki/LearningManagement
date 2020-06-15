@@ -10,7 +10,7 @@
 　フロント： HTML(Slim),CSS(SCSS),JQuery,Bootstrap  
 　バックエンド： Ruby,Rails  
 　DB:  PostgreSQL  
-　インフラ:  AWS(EC2:nginx.unicorn ,RDS,S3,ElasticIP,Route53,ALB)
+　インフラ:  AWS (EC2:nginx.unicorn ,RDS,S3,ElasticIP,Route53,ALB)
 　その他:  Docker,Docker-compose,GitHub  
 
 ## 機能
