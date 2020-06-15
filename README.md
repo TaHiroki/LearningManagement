@@ -1,5 +1,5 @@
 # ポートフォリオ　（LearningManagement）
-　　https://learningmg.herokuapp.com/
+　　https://pf.awspfsample.net/
 
 ## 概要
 　勉強の進捗を管理して、モチベーションを維持する。  
@@ -7,17 +7,17 @@
 　(お試しログイン有り、進捗画面に使い方説明表示ボタン有り)
 
 ## 使用技術
-　フロント：HTML(Slim),CSS(SCSS),JQuery,Bootstrap  
-　バックエンド：Ruby,Rails  
-　DB: PostgreSQL  
-　インフラ、その他: heroku,Docker,GitHub  
-　追加Gem: kaminari,i18n  
+　フロント： HTML(Slim),CSS(SCSS),JQuery,Bootstrap  
+　バックエンド： Ruby,Rails  
+　DB:  PostgreSQL  
+　インフラ:  AWS (EC2:nginx.unicorn ,RDS,S3,ElasticIP,Route53,ALB)
+　その他:  Docker,Docker-compose,GitHub  
 
 ## 機能
  - ログイン/ログアウト（bootstrap modal)
  - アカウント登録/編集
     - delete_flagでの論理削除
-    - 写真の登録（Active Strage, 今後AWSのS3に移行予定のため今は初期画像表示)
+    - 写真の登録
     - 詳細画面
     - フォロー、科目数の表示
  - フォロー機能
@@ -35,4 +35,4 @@
  - flashを使っての簡易メッセージの表示
 
 ## 今後の学習・導入予定技術
-　RSpec　AWS(EC２,S3,RDS,Elastic IP,Route 53,CloudFront)　Ajaxによる使用感の向上
+　RSpec Circle CI/CD　Ajaxによる使用感の向上
