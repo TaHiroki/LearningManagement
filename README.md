@@ -12,6 +12,7 @@
 　DB:  PostgreSQL  
 　インフラ:  AWS (EC2:nginx.unicorn ,RDS,S3,ElasticIP,Route53,ALB)  
 　　（ALBは設定したが読み込みに時間がかかりすぎたため外しています。）  
+    
 　その他:  Docker,Docker-compose,GitHub  
 
 ## 機能
