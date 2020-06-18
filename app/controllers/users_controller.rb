@@ -16,9 +16,9 @@ class UsersController < ApplicationController
         @boxes = []
         subject.count.times{ |n| 
           if n < subject.flag
-            @boxes << '<div class="box col-1 border border-dark" style="background-color:rgb(135, 206, 250)">'+ "#{(n + 1)}" +'</div>' 
+            @boxes << '<div class="box col-1 border border-dark" id="' + "#{(n + 1)}" + '" style="background-color:rgb(135, 206, 250)">'+ "#{(n + 1)}" +'</div>' 
           else
-            @boxes << '<div class="box col-1 border border-dark">'+ "#{(n + 1)}" +'</div>' 
+            @boxes << '<div class="box col-1 border border-dark" id="' + "#{(n + 1)}" + '">' + "#{(n + 1)}" +'</div>' 
           end
         }
         a[0] = subject.subject
