@@ -1,5 +1,9 @@
 .container-fluid 
   .sidebar.d-none.d-md-block
+    button.button.btn-r
+      i.fas.fa-caret-square-right
+    button.button.btn-l
+      i.fas.fa-caret-square-left
     ul.nav.flex-column
       li.nav-item
         .user_img
@@ -25,3 +29,4 @@
 
 - if @explanation.present?
   = render partial: 'explanation'
+
