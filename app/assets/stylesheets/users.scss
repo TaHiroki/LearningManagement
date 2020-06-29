@@ -34,6 +34,11 @@ header a {
 
 }
 
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 /* sidebar-------------------*/
 .sidebar {
     background-color: lightgray;
@@ -48,7 +53,7 @@ header a {
 
 .button {
     position: absolute;
-    top: 100px;
+    top: 40px;
     left: 330px;
     font-size: 50px;
     color: lightgray;

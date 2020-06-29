@@ -4,7 +4,7 @@
     - user.errors.full_messages.each do |message|
       p = message
 
-.container
+.row.justify-content-center
   .makeuser
     h1 = chapter
     = form_with model: user, local: true do |f|

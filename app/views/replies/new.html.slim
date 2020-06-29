@@ -4,8 +4,8 @@
     - @reply.errors.full_messages.each do |message|
       p = message
 
-.container
-  .makereply
+.row.justify-content-center
+  .makereply.col-lg-11
     h1 コメントに返信
     .comment.shadow-lg.p-3.mb-5.bg-white.rounded
             p = @comment.user.name
