@@ -1,4 +1,3 @@
-.container-fluid 
   .sidebar.d-none.d-md-block
     button.button.btn-r
       i.fas.fa-caret-square-right
@@ -27,6 +26,6 @@
           p = "フォロー数: #{session[:friends]}人"
           p = "科目数: #{session[:sb]}"
 
-- if @explanation.present?
-  = render partial: 'explanation'
+  - if @explanation.present?
+    = render partial: 'explanation'
 
