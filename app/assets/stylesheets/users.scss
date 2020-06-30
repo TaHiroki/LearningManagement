@@ -221,6 +221,107 @@ li img {
     margin-top: 60px;
 }
 
+/* index sircle-----------------------*/
+#scene-2-content {
+    position: absolute;
+    width: 100%;
+}
+
+.charts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+    width: 80%;
+    height: 600px;
+    margin-top: 100px;
+}
+
+.chart {
+    float: left;
+    position: relative;
+    width: 240px;
+    height: 240px;
+    margin: 20px 30px;
+
+    p {
+        font-size: 47px;
+        font-weight: bolder;
+    }
+
+    span {
+        font-size: 30px;
+        font-family: Comic Sans MS;
+    }
+}
+
+.circle-mask-outer,
+.circle-mask-inner {
+    overflow: hidden;
+    position: absolute;
+    width: 120px;
+    height: 240px;
+}
+
+.circle-mask-outer.left {
+    left: 0;
+}
+
+.circle-mask-outer.right {
+    right: 0;
+}
+
+.circle-mask-outer.left .circle-mask-inner {
+    left: 100%;
+    -webkit-transform-origin: 0 50%;
+    -ms-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+}
+
+.circle-mask-outer.right .circle-mask-inner {
+    right: 100%;
+    -webkit-transform-origin: 100% 50%;
+    -ms-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+}
+
+.circle-body {
+    border-radius: 50%;
+    position: absolute;
+    width: 240px;
+    height: 240px;
+}
+
+.circle-mask-outer.left {
+    .circle-body {
+        right: 0;
+    }
+}
+
+.circle-mask-outer.right .circle-body {
+    left: 0;
+}
+
+#subject .circle-body {
+    background-color: #0078ff;
+}
+
+.chart-content {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 40px;
+    background-color: #fff;
+    -webkit-backface-visibility: hidden;
+    -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
 /* new -----------------------*/
 .makeuser {
     padding-top: 50px;

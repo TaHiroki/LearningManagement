@@ -9,23 +9,7 @@ class UsersController < ApplicationController
     session[:sb] = Subject.where(user_id: @current_user.id).count
     @explanation = 1
 
-    subjects = Subject.where(user_id: @current_user.id).order(created_at: :asc)
-    mt = []
-      subjects.each do |subject|
-        a = Array.new(2)
-        @boxes = []
-        subject.count.times{ |n| 
-          if n < subject.flag
-            @boxes << '<div class="box col-1 border border-dark" id="' + "#{(n + 1)}" + '" style="background-color:rgb(135, 206, 250)">'+ "#{(n + 1)}" +'</div>' 
-          else
-            @boxes << '<div class="box col-1 border border-dark" id="' + "#{(n + 1)}" + '">' + "#{(n + 1)}" +'</div>' 
-          end
-        }
-        a[0] = subject.subject
-        a[1] = @boxes
-        mt << a
-        @Masters = Kaminari.paginate_array(mt).page(params[:page]).per(3)
-      end
+    @subjects = Subject.where(user_id: @current_user.id).page(params[:page]).per(3).order(created_at: :asc)
   end
 
   def new
