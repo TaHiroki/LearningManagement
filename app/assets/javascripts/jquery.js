@@ -9,7 +9,10 @@ $(function () {
   //達成率
   activateScene2();
 
+  //コメントのリプライを削除
+  replyDestroy();
 
+  //////////////////////
   //関数群
   function explanation() {
     $('#explanationbtn').click(function () {
@@ -125,5 +128,12 @@ $(function () {
     });
   };
 
+  function replyDestroy() {
+    $('.comment_reply').each(function () {
+      $(this).on('ajax:success', function () {
+        $(this).css('display', 'none');
+      });
+    });
+  }
 
 });
