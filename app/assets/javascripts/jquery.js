@@ -9,8 +9,11 @@ $(function () {
   //達成率
   activateScene2();
 
-  //コメントのリプライを削除
-  replyDestroy();
+  //コメントのリプライを削除　AJ
+  //replyDestroy();
+
+  //いいねボタン登録　AJ
+  fiteGood();
 
   //////////////////////
   //関数群
@@ -132,6 +135,30 @@ $(function () {
     $('.comment_reply').each(function () {
       $(this).on('ajax:success', function () {
         $(this).css('display', 'none');
+      });
+    });
+  }
+
+  function fiteGood() {
+    $('.hart').each(function () {
+      $(this).on('ajax:success', function () {
+        var $comment = $(this),
+          $icon = $comment.find('i'),
+          good = 'fas fa-hand-rock fite',
+          bad = 'fas fa-hand-rock un-fite';
+
+        if ($icon.attr('class') == good) {
+          var count = Number($comment.find('.iFite').text()) + 1;
+          $icon.css('color', 'red');
+          $icon.removeClass(good);
+          $icon.addClass(bad);
+        } else if ($icon.attr('class') == bad) {
+          var count = Number($comment.find('.iFite').text()) - 1;
+          $icon.css('color', 'gray');
+          $icon.removeClass(bad);
+          $icon.addClass(good);
+        }
+        $comment.find('.iFite').text(count);
       });
     });
   }
