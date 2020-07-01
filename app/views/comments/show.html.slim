@@ -17,15 +17,15 @@
       .comment_box2.d-flex.justify-content-start
         .hart.mr-3
           - if Fite.find_by(user_id: @current_user, comment_id: @comment.id) 
-            = link_to fite_path(@comment.id), method: :delete do
+            = link_to fite_path(@comment.id), method: :delete, remote: true do
               i.fas.fa-hand-rock.un-fite
-              = "#{@count} ファイト！"
-              - session[:page] = 0
+              span.iFite = @count
+              = "ファイト！"
           -else             
-            = link_to fite_path(@comment.id), method: :post do
+            = link_to fite_path(@comment.id), method: :post, remote: true do
               i.fas.fa-hand-rock.fite
-              = "#{@count} ファイト！ "
-              - session[:page] = 0
+              span.iFite = @count
+              = "ファイト！"
         .time
           = "#{@comment.created_at.strftime("%Y/%m/%d %H:%M")}"
       .comment_btn.d-flex.justify-content-end
