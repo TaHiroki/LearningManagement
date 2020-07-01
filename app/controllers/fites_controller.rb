@@ -1,15 +1,15 @@
 class FitesController < ApplicationController
   
   def create
-    fite = Fite.new(user_id: @current_user.id, comment_id: params[:id])
-    fite.save
-    to_show    
+    @fite = Fite.new(user_id: @current_user.id, comment_id: params[:id])
+    @fite.save
+    head :no_content
   end
 
   def destroy
-    fite = Fite.find_by(user_id: @current_user.id, comment_id: params[:id])
-    fite.destroy
-    to_show
+    @fite = Fite.find_by(user_id: @current_user.id, comment_id: params[:id])
+    @fite.destroy
+    head :no_content
   end
 
   def to_show

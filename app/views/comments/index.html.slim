@@ -21,16 +21,14 @@
           .row
             .hart.d-flex.ml-3
               - if Fite.find_by(user_id: @current_user, comment_id: comment.id) 
-                = link_to fite_path(comment.id), method: :delete do
+                = link_to fite_path(comment.id), method: :delete, remote: true do
                   i.fas.fa-hand-rock.un-fite
-                  - session[:page] = 1
-                  = Fite.where(comment_id: comment.id).count
+                  span.iFite = Fite.where(comment_id: comment.id).count
                   = "ファイト！"
               - else             
-                = link_to fite_path(comment.id), method: :post do
-                  i.fas.fa-hand-rock.fite
-                  - session[:page] = 1
-                  = Fite.where(comment_id: comment.id).count
+                = link_to fite_path(comment.id), method: :post, remote: true do
+                  i.fas.fa-hand-rock.fite 
+                  span.iFite = Fite.where(comment_id: comment.id).count
                   = "ファイト！"
               time.ml-3
                 p = "#{comment.created_at.strftime("%Y/%m/%d %H:%M")}"
