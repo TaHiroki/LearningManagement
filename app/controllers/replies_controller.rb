@@ -20,7 +20,7 @@ class RepliesController < ApplicationController
   def destroy
     @reply = Reply.find(params[:id])
     @reply.destroy
-    redirect_to comment_path(re_params["re"]), notice: "コメントを削除しました。"
+    head :no_content
   end
 
   private

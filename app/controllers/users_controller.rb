@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     session[:sb] = Subject.where(user_id: @current_user.id).count
     @explanation = 1
 
-    @subjects = Subject.where(user_id: @current_user.id).page(params[:page]).per(3).order(created_at: :asc)
+    @subjects = Subject.where(user_id: @current_user.id).page(params[:page]).per(6).order(created_at: :asc)
   end
 
   def new
