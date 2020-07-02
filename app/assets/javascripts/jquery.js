@@ -10,9 +10,9 @@ $(function () {
   activateScene2();
 
   //コメントのリプライを削除　AJ
-  //replyDestroy();
+  replyDestroy();
 
-  //いいねボタン登録　AJ
+  //いいねボタン　AJ
   fiteGood();
 
   //////////////////////
@@ -132,9 +132,11 @@ $(function () {
   };
 
   function replyDestroy() {
-    $('.comment_reply').each(function () {
+    $('.comment_reply').each(function (index, element) {
       $(this).on('ajax:success', function () {
-        $(this).css('display', 'none');
+        if ($('.pageId').text() == 1) {
+          $(this).css('display', 'none');
+        }
       });
     });
   }
@@ -145,16 +147,19 @@ $(function () {
         var $comment = $(this),
           $icon = $comment.find('i'),
           good = 'fas fa-hand-rock fite',
-          bad = 'fas fa-hand-rock un-fite';
+          bad = 'fas fa-hand-rock un-fite',
+          $link = $comment.find('a');
 
         if ($icon.attr('class') == good) {
           var count = Number($comment.find('.iFite').text()) + 1;
-          $icon.css('color', 'red');
+
+          $link.attr('data-method', 'delete');
           $icon.removeClass(good);
           $icon.addClass(bad);
         } else if ($icon.attr('class') == bad) {
           var count = Number($comment.find('.iFite').text()) - 1;
-          $icon.css('color', 'gray');
+
+          $link.attr('data-method', 'post');
           $icon.removeClass(bad);
           $icon.addClass(good);
         }
