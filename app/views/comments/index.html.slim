@@ -21,12 +21,12 @@
           .row
             .hart.d-flex.ml-3
               - if Fite.find_by(user_id: @current_user, comment_id: comment.id) 
-                = link_to fite_path(comment.id), method: :delete, remote: true do
+                = link_to fite_path(comment.id), method: :delete, remote: true, class: "aLink" do
                   i.fas.fa-hand-rock.un-fite
                   span.iFite = Fite.where(comment_id: comment.id).count
                   = "ファイト！"
               - else             
-                = link_to fite_path(comment.id), method: :post, remote: true do
+                = link_to fite_path(comment.id), method: :post, remote: true, class: "aLink" do
                   i.fas.fa-hand-rock.fite 
                   span.iFite = Fite.where(comment_id: comment.id).count
                   = "ファイト！"
