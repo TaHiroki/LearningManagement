@@ -6,6 +6,7 @@ end
   def new
     @subject = Subject.new
     @chapter = "科目登録"
+    @flag = 0
   end
 
   def create
@@ -16,6 +17,7 @@ end
     if @subject.save
       redirect_to users_path, notice: '科目を登録しました！'
     else
+      @flag = 0
       render :new
     end
   end
@@ -23,14 +25,20 @@ end
   def edit
     @chapter = "科目編集"
     @subject = Subject.find(params[:id])
+    @flag = @subject.flag
   end
 
   def update
     @subject = Subject.find(params[:id])
 
-    if @subject.update(subject_params)
+    if subject_params[:count].to_i < @subject.flag && 0 <= subject_params[:count].to_i
+      @originalError = "#{@subject.flag}以上の値を入力してください。"
+      render :edit
+    elsif @subject.update(subject_params)
       redirect_to users_path, notice: "科目「#{@subject.subject}」を更新しました!"
     else
+      @chapter = "科目編集"
+      @flag = 0
       render :edit
     end
   end

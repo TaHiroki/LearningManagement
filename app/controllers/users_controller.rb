@@ -95,11 +95,21 @@ class UsersController < ApplicationController
     c.times{|n|
       if params[:"#{n+1}"].present?
         subject = subjects.find(n+1)
-        subject.flag = params[:"#{n+1}"]
-        subject.save
+
+        if 0 <= params[:"#{n+1}"].to_i && params[:"#{n+1}"].to_i <= subject.count
+          subject.flag = params[:"#{n+1}"]
+          subject.save
+        else
+          @originalError = "それぞれの科目は、値を0〜個数以下で入力してください。"
+        end
       end
       }
-    redirect_to users_path, notice: "進捗を保存しました！"
+    if  @originalError.present?
+      @subjects = Subject.where(user_id: @current_user.id).order(created_at: :asc)
+      render :use
+    else
+      redirect_to users_path, notice: "進捗を保存しました！" 
+    end
   end
 
   private

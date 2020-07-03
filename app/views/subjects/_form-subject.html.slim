@@ -3,6 +3,10 @@
     h4.alert-heading 入力を確認してください。
     - @subject.errors.full_messages.each do |message|
       p = message
+- elsif @originalError.present?
+  .alert.alert-danger.text-center role="alert"
+    h4.alert-heading 入力を確認してください。
+    p = @originalError
 
 .row.justify-content-center
   .main.col-lg-5
@@ -14,6 +18,6 @@
         = f.select :subject, [["英語","英語"],["リスニング","リスニング"],["国語","国語"],
         ["数学","数学"],["理科","理科"],["社会","社会"],["その他","その他"]], class: 'form-control'
       .form-group
-        = f.label :count, '個数'
-        = f.text_field :count, placeholder: '数値を入力してください', class: 'form-control'
+        = f.label :count, "個数　(#{flag} 〜　)"
+        = f.text_field :count, placeholder: "#{flag}以上の数値を入力してください", class: 'form-control'
       = f.submit '登録する', class: 'btn btn-primary mt-5'
