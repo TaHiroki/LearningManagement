@@ -1,14 +1,17 @@
-= render partial: 'sidebar'
+- if @originalError.present?
+  .alert.alert-danger.text-center role="alert"
+    h4.alert-heading 入力を確認してください。
+    p = @originalError   
 
 .row.mt-5.justify-content-center
-  .savesubject.mt-5.col-lg-5
+  .savesubject.mt-5.mb-5.col-lg-5
     h1 進捗保存
 
     = form_with url: boxsave_users_path , local: true do |f|
       - @subjects.each do |subject|
         .form-group.mt-5
-          = f.label :subject , "#{subject.subject}"
-          = f.number_field subject.id, value: subject.flag, placeholder: '個数入力', class: 'form-control'
+          = f.label :subject , "#{subject.subject}　(0　〜　#{subject.count})"
+          = f.number_field subject.id, value: subject.flag, placeholder: "個数入力 (0　〜　#{subject.count})", class: 'form-control'
       - if @subjects.present?
         = f.submit '保存する', class: 'btn btn-info'
         = link_to '科目編集', subjects_path, class: 'btn btn-primary '
