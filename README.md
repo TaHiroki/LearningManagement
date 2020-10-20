@@ -1,5 +1,5 @@
 # ポートフォリオ　（LearningManagement）
-　　http://pf.awspfsample.net/
+　　http://pf.awspfsample.net/users/login
 
 ## 概要
 　勉強の進捗を管理して、モチベーションを維持する。  
